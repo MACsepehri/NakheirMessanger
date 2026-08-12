@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import LoginPage from './pages/LoginPage'
 import NotFoundPage from './pages/Notfound'
+import MainPage from './pages/Mainpage'
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
     <Router>
       <Routes>
         <Route path='*' element={<NotFoundPage />} />
+        <Route path='/' element={<MainPage />} />
         <Route path='/login' element={<LoginPage />} />
       </Routes>
     </Router>
