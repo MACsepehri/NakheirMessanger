@@ -1,3 +1,5 @@
+import '../css/Main.css'
+
 export default function LoginPage() {
     return (
         <>
@@ -16,6 +18,7 @@ export default function LoginPage() {
                         <p>تکرار رمز عبور</p>
                         <input type="password" />
                     </div>
+                    <input type="submit" value="ثبت اطلاعات" className="sub" />
                 </form>
             </div>
         </>
