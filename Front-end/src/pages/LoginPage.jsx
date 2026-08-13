@@ -7,14 +7,13 @@ export default function LoginPage() {
     padding-top:1%;
     width:400px;
     height:500px;
-    background-color:#1A1953;
+    background-color: #282828;
     border-radius:40px;
     display:flex;
     flex-direction:column;
     align-items:center;
     gap:40px;
     &:hover{
-    box-shadow:0px 0px 30px #1A1953 ;
     transform:translateY(-1%);
     }
     `
@@ -32,13 +31,13 @@ export default function LoginPage() {
     height:35px;
     background: transparent;
     border:0;
-    border-bottom : 2px solid black;
+    border-bottom : 2px solid #680a87;
     outline:none;
     &:hover{
-    border-bottom : 2px solid #2342be;
+    border-bottom : 2px solid #9112BC;
     }
     &:focus{
-        border-bottom : 2px solid #2342be;
+        border-bottom : 2px solid #9112BC;
     }
     `
 
@@ -47,9 +46,9 @@ export default function LoginPage() {
     width:150px;
     height:40px;
     border-radius:10px;
-    background-color: #2F2FE4;
+    background-color: #9112BC;
     border:none;
-    box-shadow:0px 0px 10px #2F2FE4;
+    box-shadow:0px 0px 10px #9112BC;
     cursor:pointer;
     &:hover{
     transform:scale(1.1);
