@@ -20,6 +20,7 @@
     box-sizing: border-box;
     text-decoration: none;
     color: white;
+    transition: all 200ms ease;
 }
 
 body {
