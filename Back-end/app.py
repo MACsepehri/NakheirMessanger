@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_socketio import SocketIO, join_room, emit
 import os
@@ -6,16 +6,14 @@ import os
 app = Flask(__name__)
 app.secret_key = "flask_messanger_nakheir"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config["SQLALCHEMY_DATABASE_URI"] = (
     f"sqlite:///{os.path.join(basedir, 'database.db')}"
 )
-
 db = SQLAlchemy(app)
-
 socketio = SocketIO(app, cors_allowed_origins="*")
 
+# error keys
 ERROR_KEY = {
     "null": -1,
     "404": 0,
@@ -25,7 +23,7 @@ ERROR_KEY = {
     "unknown": 4
 }
 
-
+# database
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique=True, nullable=False)
@@ -33,7 +31,6 @@ class User(db.Model):
     password = db.Column(db.String, nullable=False)
     public_name = db.Column(db.String, unique=True, nullable=False)
     chats = db.Column(db.JSON, default=list)
-
 
 class Chat(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -44,11 +41,11 @@ class Chat(db.Model):
         default=lambda: {"chats": []}
     )
 
-
+# init of database
 with app.app_context():
     db.create_all()
 
-
+# socketio parts
 @socketio.on("connect")
 def socket_connect():
     print("Socket connected")
@@ -76,7 +73,7 @@ def join_user(data):
         "public_name": public_name
     })
 
-
+# routes
 @app.route("/api-login", methods=["POST"])
 def api_login():
     json_data = request.get_json(silent=True)
@@ -388,6 +385,32 @@ def send_message():
         "code": ERROR_KEY["success"]
     }
 
+@app.route("/main-login-checker", methods=["POST"])
+def mainLoginChecker():
+    jsonData = request.get_json()
+    name = jsonData.get("name")
+    password = jsonData.get("password")
+    public_name = jsonData.get("public_name")
+    
+    if not name or not password or not public_name:
+        return jsonify({"status": ERROR_KEY["null"], "message": "All fields are required", "success": False}), 400
+    
+    user = User.query.filter_by(username=name).first()
+    
+    if not user:
+        return jsonify({"status": ERROR_KEY["404"], "message": "User not found", "success": False}), 404
+    
+    if user.password != password:
+        return jsonify({"status": ERROR_KEY["unknown"], "message": "Invalid password", "success": False}), 401
+    
+    if user.public_name != public_name:
+        return jsonify({"status": ERROR_KEY["similar_data"], "message": "Public name does not match", "success": False}), 403
+    
+    return jsonify({
+        "status": ERROR_KEY["success"],
+        "message": "All information is valid",
+        "success": True,
+    }), 200
 
 if __name__ == "__main__":
     socketio.run(app, debug=True, port=8080, host="0.0.0.0")
