@@ -393,23 +393,25 @@ def mainLoginChecker():
     public_name = jsonData.get("public_name")
     
     if not name or not password or not public_name:
-        return jsonify({"status": ERROR_KEY["null"], "message": "All fields are required", "success": False}), 400
+        return jsonify({"error": "All fields are required"}), 400
     
     user = User.query.filter_by(username=name).first()
     
     if not user:
-        return jsonify({"status": ERROR_KEY["404"], "message": "User not found", "success": False}), 404
+        return jsonify({"error": "User not found"}), 404
     
     if user.password != password:
-        return jsonify({"status": ERROR_KEY["unknown"], "message": "Invalid password", "success": False}), 401
+        return jsonify({"error": "Invalid password"}), 401
     
     if user.public_name != public_name:
-        return jsonify({"status": ERROR_KEY["similar_data"], "message": "Public name does not match", "success": False}), 403
+        return jsonify({"error": "Public name does not match"}), 403
     
     return jsonify({
-        "status": ERROR_KEY["success"],
-        "message": "All information is valid",
-        "success": True,
+        "id": user.id,
+        "username": user.username,
+        "email": user.email,
+        "public_name": user.public_name,
+        "chats": user.chats
     }), 200
 
 if __name__ == "__main__":
