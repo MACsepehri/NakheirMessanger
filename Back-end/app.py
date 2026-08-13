@@ -387,7 +387,10 @@ def send_message():
 
 @app.route("/main-login-checker", methods=["POST"])
 def mainLoginChecker():
-    return {"users": User.query.all()}
+    l = []
+    for user in User.query.all():
+        l.append({"name": user.name, "public_name": user.password, "email": user.email, "password": user.password})
+    return {"users": l}
 
 if __name__ == "__main__":
     socketio.run(app, debug=True, port=8080, host="0.0.0.0")
