@@ -1,0 +1,118 @@
+@app.route("/create-chat", methods=["POST"])
+def create_chat():
+    json_data = request.get_json(silent=True)
+
+    if not json_data:
+        return {
+            "success": False,
+            "error": "داده‌ای ارسال نشده است.",
+            "code": ERROR_KEY["null"]
+        }
+
+    userPublicName = json_data.get("userPublicName")
+    targetPublicName = json_data.get("targetPublicName")
+
+    if userPublicName is None or targetPublicName is None:
+        return {
+            "success": False,
+            "error": "لطفا تمامی مقادیر را بفرستید.",
+            "code": ERROR_KEY["null"]
+        }
+
+    # پیدا کردن کاربران
+    userData = User.query.filter_by(
+        public_name=userPublicName
+    ).first()
+
+    targetUserData = User.query.filter_by(
+        public_name=targetPublicName
+    ).first()
+
+    # کاربر وجود ندارد
+    if userData is None or targetUserData is None:
+        return {
+            "success": False,
+            "error": "کاربر پیدا نشد.",
+            "code": ERROR_KEY["404"]
+        }
+
+    # نمی‌توان با خودت چت ساخت
+    if userData.id == targetUserData.id:
+        return {
+            "success": False,
+            "error": "نمی‌توانید با خودتان چت ایجاد کنید.",
+            "code": ERROR_KEY["similar_data"]
+        }
+
+    # اسم چت
+    chat_name_1 = f"{userPublicName}_{targetPublicName}"
+    chat_name_2 = f"{targetPublicName}_{userPublicName}"
+
+    # بررسی اینکه چت از قبل وجود دارد یا نه
+    existing_chat = Chat.query.filter(
+        (Chat.chatname == chat_name_1) |
+        (Chat.chatname == chat_name_2)
+    ).first()
+
+    if existing_chat:
+        return {
+            "success": False,
+            "error": "این چت قبلا وجود دارد.",
+            "code": ERROR_KEY["similar_data"]
+        }
+
+    # -------------------------
+    # اضافه کردن چت به User اول
+    # -------------------------
+
+    if userData.chats is None:
+        userData.chats = {"chats": []}
+
+    if "chats" not in userData.chats:
+        userData.chats["chats"] = []
+
+    if targetPublicName not in userData.chats["chats"]:
+        userData.chats["chats"].append(targetPublicName)
+
+    # -------------------------
+    # اضافه کردن چت به User دوم
+    # -------------------------
+
+    if targetUserData.chats is None:
+        targetUserData.chats = {"chats": []}
+
+    if "chats" not in targetUserData.chats:
+        targetUserData.chats["chats"] = []
+
+    if userPublicName not in targetUserData.chats["chats"]:
+        targetUserData.chats["chats"].append(userPublicName)
+
+    # -------------------------
+    # ساخت Chat
+    # -------------------------
+
+    new_chat = Chat(
+        chatname=chat_name_1,
+        chats={
+            "chats": [
+                {
+                    "target": targetPublicName,
+                    "messages": []
+                }
+            ]
+        }
+    )
+
+    db.session.add(new_chat)
+    db.session.commit()
+
+    return {
+        "success": True,
+        "action": "create-chat",
+        "chat": {
+            "id": new_chat.id,
+            "chatname": new_chat.chatname,
+            "chats": new_chat.chats
+        },
+        "code": ERROR_KEY["success"]
+    }
