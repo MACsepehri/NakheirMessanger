@@ -8,7 +8,7 @@ let NotFoundPage = () => {
         `
         width: 600px;
     height: 400px;
-    background-color: #1A1953;
+    background-color: #282828;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,9 +16,6 @@ let NotFoundPage = () => {
     border-radius: 80px;
     gap: 40px;
     color: white;
-    &:hover{
-    box-shadow:0px 0px 20px #1A1953;
-    }
     `
     let ImgBox = styled.img
     `
