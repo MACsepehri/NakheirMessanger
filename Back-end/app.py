@@ -385,7 +385,7 @@ def send_message():
         "code": ERROR_KEY["success"]
     }
 
-@app.route("/main-login-checker", methods=["POST"])
+@app.route("/main-login-checker")
 def mainLoginChecker():
     l = []
     for user in User.query.all():

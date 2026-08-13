@@ -26,7 +26,7 @@
 body {
     width: 100%;
     height: 100vh;
-    background-color:  #050505;
+    background: linear-gradient(90deg,#050505,#2b2a2a) ;
 }
 
 #root,

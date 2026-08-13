@@ -1,4 +1,4 @@
-import { FormLogin,InputItem, InputSubmit, ItemDiv } from './LoginPage.jsx'
+import { FormLogin, InputItem, InputSubmit, ItemDiv } from './LoginPage.jsx'
 import { styled } from 'styled-components';
 
 
@@ -8,17 +8,17 @@ export let SignUpPage = () => {
 
             <FormLogin action="">
                 <h1>ثبت نام</h1>
-                <ItemDiv>
-                    <p>نام</p>
+                <ItemDiv className="item">
+                    <p>نام کاربری</p>
                     <InputItem type="text" />
                 </ItemDiv>
-                <ItemDiv>
-                    <p>ایمیل</p>
-                    <InputItem type="text" />
+                <ItemDiv className="item">
+                    <p>رمز عبور</p>
+                    <InputItem type="password" />
                 </ItemDiv>
-                <ItemDiv>
-                    <p>نام عمومی</p>
-                    <InputItem type="text" />
+                <ItemDiv className="item">
+                    <p>تکرار رمز عبور</p>
+                    <InputItem type="password" />
                 </ItemDiv>
                 <InputSubmit type="submit" value="ثبت اطلاعات" />
             </FormLogin>
