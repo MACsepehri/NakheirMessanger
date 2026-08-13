@@ -387,32 +387,7 @@ def send_message():
 
 @app.route("/main-login-checker", methods=["POST"])
 def mainLoginChecker():
-    jsonData = request.get_json()
-    name = jsonData.get("name")
-    password = jsonData.get("password")
-    public_name = jsonData.get("public_name")
-    
-    if not name or not password or not public_name:
-        return jsonify({"error": "All fields are required"}), 400
-    
-    user = User.query.filter_by(username=name).first()
-    
-    if not user:
-        return jsonify({"error": "User not found"}), 404
-    
-    if user.password != password:
-        return jsonify({"error": "Invalid password"}), 401
-    
-    if user.public_name != public_name:
-        return jsonify({"error": "Public name does not match"}), 403
-    
-    return jsonify({
-        "id": user.id,
-        "username": user.username,
-        "email": user.email,
-        "public_name": user.public_name,
-        "chats": user.chats
-    }), 200
+    return {"users": User.query.all()}
 
 if __name__ == "__main__":
     socketio.run(app, debug=True, port=8080, host="0.0.0.0")
