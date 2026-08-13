@@ -1,9 +1,7 @@
 import '../css/Main.css'
 import { styled } from 'styled-components';
-
-export default function LoginPage() {
-    let FormLogin = styled.form
-        `
+export let FormLogin = styled.form
+    `
     padding-top:1%;
     width:400px;
     height:500px;
@@ -17,16 +15,16 @@ export default function LoginPage() {
     transform:translateY(-1%);
     }
     `
-    let ItemDiv = styled.div
-        `
+export let ItemDiv = styled.div
+    `
     width:100%;
     display:flex;
     flex-direction:column;
     align-items:center;
     gap:10px;
     `
-    let InputItem = styled.input
-        `
+export let InputItem = styled.input
+    `
     width:80%;
     height:35px;
     background: transparent;
@@ -41,8 +39,8 @@ export default function LoginPage() {
     }
     `
 
-    let InputSubmit = styled.input
-        `
+export let InputSubmit = styled.input
+    `
     width:150px;
     height:40px;
     border-radius:10px;
@@ -54,6 +52,8 @@ export default function LoginPage() {
     transform:scale(1.1);
     }
     `
+export function LoginPage() {
+
     return (
         <>
             <div className="container">
