@@ -1,4 +1,4 @@
-import { FormLogin, InputItem, InputSubmit, ItemDiv } from './LoginPage.jsx'
+import { FormLogin, InputItem, InputSubmit, ItemDiv } from '../styled_components/StyledLoginPage'
 import { styled } from 'styled-components';
 
 
