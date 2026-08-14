@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import {ItemDiv,InputItem} from '../../styled_components/StyledLoginPage'
 
-let FormAuthSignUpItem = ({ ItemName, InputType }) => {
+let FormAuthSignUpItem = ({ ItemName, InputType,IDNAME }) => {
     let users = []
     let CheckInput = () => {
         if(InputType=='text'){
@@ -11,13 +11,13 @@ let FormAuthSignUpItem = ({ ItemName, InputType }) => {
                     console.log(input.style);
                     
                     input.style.borderBottom = '2px solid red'
-                    document.querySelector('.alert').innerHTML = 'این نام کاربری وجود دارد'
+                    document.querySelector('.alertTextInput').innerHTML = 'این نام کاربری وجود دارد'
                 }
                 else{
-                                        input.style.borderBottom = '2px solid #9112BC'
-                    document.querySelector('.alert').innerHTML = ''
+                    input.style.borderBottom = '2px solid #9112BC'
+                    document.querySelector('.alertTextInput').innerHTML = ''
                 }
-            })            
+            })         
         }
     }
     useEffect(() => {
@@ -27,13 +27,14 @@ let FormAuthSignUpItem = ({ ItemName, InputType }) => {
         })
         .then((data) => {
             users = data.users;
+            console.log(users)
         })
     },[users])
     return (
         <ItemDiv className="item">
             <p>{ItemName}</p>
-            <InputItem className={`${InputType=='text'?'TextInput':'PasswordInput'}`} type={`${InputType}`} onChange={() => {CheckInput()}} />
-            <h6 className="alert"></h6>
+            <InputItem className={`${InputType=='text'?'TextInput':'PasswordInput'}`} id={IDNAME} type={`${InputType}`} onChange={() => {CheckInput()}} />
+            <h6 className={`alert${IDNAME}`}></h6>
         </ItemDiv>
     )
 }

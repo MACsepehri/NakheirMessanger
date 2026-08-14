@@ -76,21 +76,21 @@ def join_user(data):
     })
 
 # routes
-@app.route("/api-login", methods=["POST"])
+@app.route("/api-login")
 def api_login():
-    json_data = request.get_json(silent=True)
+    # json_data = request.get_json(silent=True)
 
-    if not json_data:
-        return {
-            "success": False,
-            "error": "داده‌ای ارسال نشده است.",
-            "code": ERROR_KEY["null"]
-        }
+    # if not json_data:
+    #     return {
+    #         "success": False,
+    #         "error": "داده‌ای ارسال نشده است.",
+    #         "code": ERROR_KEY["null"]
+    #     }
 
-    username = json_data.get("username")
-    email = json_data.get("email")
-    password = json_data.get("password")
-    public_name = json_data.get("public_name")
+    username = request.args.get("username")
+    email = request.args.get("email")
+    password = request.args.get("password")
+    public_name = request.args.get("public_name")
 
     if (
         username is None
@@ -391,14 +391,16 @@ def send_message():
 def mainLoginChecker():
     l = [{"name": 'آرتین', "public_name": 'artin231', "email": 'leiartrezjah@gmail.com'}]
     for user in User.query.all():
-        l.append({"name": user.name, "public_name": user.password, "email": user.email})
+        l.append({"name": user.username, "public_name": user.password, "email": user.email})
     return {"users": l}
 
-@app.route("/check-password", methods=["POST"])
+@app.route("/check-password")
 def checkPassword():
-    password = request.form.get("password")
+    password = request.args.get("password")
+    print(str(password))
     for user in User.query.all():
-        if user.password == password:
+        print(user.password)
+        if user.password == str(password):
             return {"same": True}
     return {"same": False}
 
