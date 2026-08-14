@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_socketio import SocketIO, join_room, emit
+from flask_cors import CORS
 import os
 
 app = Flask(__name__)
+CORS(app)
 app.secret_key = "flask_messanger_nakheir"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 basedir = os.path.abspath(os.path.dirname(__file__))
