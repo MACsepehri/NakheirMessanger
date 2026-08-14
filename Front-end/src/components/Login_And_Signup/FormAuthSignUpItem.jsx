@@ -5,9 +5,19 @@ let FormAuthSignUpItem = ({ ItemName, InputType }) => {
     let users = []
     let CheckInput = () => {
         if(InputType=='text'){
-            let inputVal = document.querySelector('.TextInput').value;
-            console.log(users);
-            
+            let input = document.querySelector('.TextInput');
+            users.forEach(i => {                
+                if(i.public_name == input.value){
+                    console.log(input.style);
+                    
+                    input.style.borderBottom = '2px solid red'
+                    document.querySelector('.alert').innerHTML = 'این نام کاربری وجود دارد'
+                }
+                else{
+                                        input.style.borderBottom = '2px solid #9112BC'
+                    document.querySelector('.alert').innerHTML = ''
+                }
+            })            
         }
     }
     useEffect(() => {
@@ -22,7 +32,8 @@ let FormAuthSignUpItem = ({ ItemName, InputType }) => {
     return (
         <ItemDiv className="item">
             <p>{ItemName}</p>
-            <InputItem className={`${InputType=='text'?'TextInput':'PasswordInput'}`} type={`${InputType}`} onKeyDown={() => {CheckInput()}} />
+            <InputItem className={`${InputType=='text'?'TextInput':'PasswordInput'}`} type={`${InputType}`} onChange={() => {CheckInput()}} />
+            <h6 className="alert"></h6>
         </ItemDiv>
     )
 }

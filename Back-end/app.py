@@ -389,9 +389,9 @@ def send_message():
 
 @app.route("/main-login-checker")
 def mainLoginChecker():
-    l = []
+    l = [{"name": 'آرتین', "public_name": 'artin231', "email": 'leiartrezjah@gmail.com'}]
     for user in User.query.all():
-        l.append({"name": user.name, "public_name": user.password, "email": user.email, "password": user.password})
+        l.append({"name": user.name, "public_name": user.password, "email": user.email})
     return {"users": l}
 
 if __name__ == "__main__":

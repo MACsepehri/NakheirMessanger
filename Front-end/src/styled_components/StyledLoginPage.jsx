@@ -13,6 +13,7 @@ export let InputItem = styled.input
     width:80%;
     height:35px;
     background: transparent;
+    text-align:center;
     border:0;
     border-bottom : 2px solid #680a87;
     outline:none;
@@ -26,9 +27,9 @@ export let InputItem = styled.input
 
 export let FormLogin = styled.form
     `
-    padding-top:1.5%;
+    padding-top:1%;
     width:400px;
-    height:500px;
+    min-height:500px;
     background-color: #282828;
     border-radius:40px;
     display:flex;
