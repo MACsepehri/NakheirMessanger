@@ -394,5 +394,13 @@ def mainLoginChecker():
         l.append({"name": user.name, "public_name": user.password, "email": user.email})
     return {"users": l}
 
+@app.route("/check-password", methods=["POST"])
+def checkPassword():
+    password = request.form.get("password")
+    for user in User.query.all():
+        if user.password == password:
+            return {"same": True}
+    return {"same": False}
+
 if __name__ == "__main__":
     socketio.run(app, debug=True, port=8080, host="0.0.0.0")
