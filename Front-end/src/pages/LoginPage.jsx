@@ -1,4 +1,4 @@
-import Login from '../components/Login/Login'
+import FormAuth from '../components/Login_And_Signup/FormAuth'
 import '../css/Main.css'
 
 export function LoginPage() {
@@ -6,7 +6,7 @@ export function LoginPage() {
     return (
         <>
             <div className="container">
-                <Login/>
+                <FormAuth name='ورود'/>
             </div>
         </>
     )

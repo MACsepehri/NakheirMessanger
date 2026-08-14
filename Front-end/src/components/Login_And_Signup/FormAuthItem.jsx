@@ -1,6 +1,6 @@
 import {ItemDiv,InputItem} from '../../styled_components/StyledLoginPage'
 
-let LoginItem = ({ ItemName, InputType }) => {
+let FormAuthItem = ({ ItemName, InputType }) => {
     return (
         <ItemDiv className="item">
             <p>{ItemName}</p>
@@ -9,4 +9,4 @@ let LoginItem = ({ ItemName, InputType }) => {
     )
 }
 
-export default LoginItem;
+export default FormAuthItem;
