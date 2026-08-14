@@ -1,21 +1,21 @@
 @font-face {
-    font-family: 'vazir_m';
-    src: url('../font/Vazir-Medium.ttf');
+    font-family: 'iran_m';
+    src: url('../font/IRANYekanX-Medium.woff');
 }
 
 @font-face {
-    font-family: 'vazir_l';
-    src: url('../font/Vazir-Light.ttf');
+    font-family: 'iran_l';
+    src: url('../font/IRANYekanX-Light.woff');
 }
 
 @font-face {
     font-family: 'vazir_b';
-    src: url('../font/Vazir-Bold.ttf');
+    src: url('../font/IRANYekanX-Bold.woff');
 }
 
 
 * {
-    font-family: 'vazir_m';
+    font-family: 'iran_m';
     margin: 0;
     box-sizing: border-box;
     text-decoration: none;

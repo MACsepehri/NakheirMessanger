@@ -26,7 +26,7 @@ export let InputItem = styled.input
 
 export let FormLogin = styled.form
     `
-    padding-top:1%;
+    padding-top:1.5%;
     width:400px;
     height:500px;
     background-color: #282828;
