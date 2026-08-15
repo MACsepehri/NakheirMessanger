@@ -6,23 +6,38 @@
 <img src="https://readme-typing-svg.herokuapp.com?size=24&color=C39BD3&center=true&vCenter=true&width=600&lines=Real-time+Web+Messenger+%F0%9F%92%AC;Built+with+React+%2B+Flask+%2B+MySQL;Secure+%E2%80%A2+Responsive+%E2%80%A2+Modern" alt="Typing SVG"/>
 </a>
 
+<br>
+
+<p>
+<strong>A modern real-time web messenger</strong><br>
+Built with <strong>React</strong>, <strong>Flask</strong> and <strong>MySQL</strong>
+</p>
+
 </div>
 
 ---
 
+<div align="center">
+
 ## ✨ Features
 
-- ⚡ Real-time send & receive messages
-- 🔐 User authentication
-- 👤 Profile & contacts management
-- 🗄️ Secure message storage in database
-- 📱 Fully responsive design
+⚡ Real-time send & receive messages  
+<br>
+🔐 User authentication  
+<br>
+👤 Profile & contacts management  
+<br>
+🗄️ Secure message storage in database  
+<br>
+📱 Fully responsive design
+
+</div>
 
 ---
 
-## 🛠️ Tech Stack
-
 <div align="center">
+
+## 🛠️ Tech Stack
 
 <img src="Readme/React-Dark.svg" width="100" alt="React"/>
 <img src="Readme/JavaScript.svg" width="100" alt="JavaScript"/>
@@ -36,23 +51,48 @@
 
 ---
 
+<div align="center">
+
 ## 📦 Architecture
 
-| Layer | Technologies |
-|---|---|
-| **Front-End** | React • JavaScript • HTML • CSS |
-| **Back-End** | Python • Flask • Flask-SQLAlchemy |
-| **Database** | MySQL |
+<table>
+<tr>
+<th>Layer</th>
+<th>Technologies</th>
+</tr>
+
+<tr>
+<td><strong>Front-End</strong></td>
+<td>React • JavaScript • HTML • CSS</td>
+</tr>
+
+<tr>
+<td><strong>Back-End</strong></td>
+<td>Python • Flask • Flask-SQLAlchemy</td>
+</tr>
+
+<tr>
+<td><strong>Database</strong></td>
+<td>MySQL</td>
+</tr>
+</table>
+
+</div>
 
 ---
 
-## 📜 License
-
-This project is licensed under the **GNU General Public License v3.0**.
-
 <div align="center">
 
+## 📜 License
+
+<p>
+This project is licensed under the
+<strong>GNU General Public License v3.0</strong>.
+</p>
+
+<p>
 Made with ☕ & 💻
+</p>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=9B59B6&height=120&section=footer&text=Thanks%20for%20visiting%20%F0%9F%92%9C&fontSize=28&fontColor=FFFFFF&animation=twinkling" width="100%"/>
 
