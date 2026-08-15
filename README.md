@@ -1,7 +1,7 @@
 <div>
   <h1>NakheirMessanger</h1>
   
-  <p>پیام‌رسان تحت وب ساخته‌شده با <strong>React</strong>، <strong>Flask</strong> و <strong>MySQL</strong>.</p>
+  <p>پیام‌رسان تحت وب ساخته‌شده با <strong>React</strong>، <strong>Flask</strong> و <strong>MySQL</strong></p>
   
   <h2>امکانات</h2>
   <ul>
@@ -9,7 +9,7 @@
     <li>احراز هویت کاربران</li>
     <li>مدیریت پروفایل و مخاطبین</li>
     <li>ذخیره‌سازی امن پیام‌ها در دیتابیس</li>
-    <li>رابط کاربری واکنش‌گرا (Responsive)</li>
+    <li>Responsive</li>
   </ul>
   
   <h2>تکنولوژی‌ها</h2>
@@ -36,4 +36,3 @@
     تحت لایسنس <strong>GNU General Public License v3.0</strong>
   </div>
 </div>
-`
