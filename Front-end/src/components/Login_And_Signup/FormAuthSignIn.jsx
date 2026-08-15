@@ -20,7 +20,7 @@ let FormAuthSignIn = ({ name }) => {
         }
         if (input.value !== input2.value) {
             input2.style.borderBottom = '2px solid red';
-            alertpass2.innerHTML = 'این رمز تکراری است'
+            alertpass2.innerHTML = 'این رمز با رمز بالا برابر نیست'
         }
         else{
             input2.style.borderBottom = '2px solid #9112BC';
