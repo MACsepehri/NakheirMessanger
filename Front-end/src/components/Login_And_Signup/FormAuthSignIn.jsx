@@ -5,20 +5,25 @@ let FormAuthSignIn = ({ name }) => {
     let SubmitHandler = async () => {
         event.preventDefault();
         let input = document.getElementById('password1');
-        let res = await fetch('http://127.0.0.1:5000/check-password?password='+input.value);
+        let res = await fetch('http://127.0.0.1:5000/check-password?password=' + input.value);
+        let alertpass = document.querySelector('.alertpassword1');
         let data = await res.json();
         console.log(data);
-        if(data.same){
-            input.style.borderBottom = '2px solid red'
+        if (data.same) {
+            input.style.borderBottom = '2px solid red';
+            alertpass.innerHTML = 'این رمز تکراری است'
+        } else {
+            input.style.borderBottom = '2px solid #9112BC';
+            alertpass.innerHTML = ''
         }
-        
+
     }
     return (
         <FormLogin action="" className="login" onSubmit={() => { SubmitHandler() }}>
             <h1>{name}</h1>
             <FormAuthSignUpItem ItemName='نام کاربری' InputType='text' IDNAME='TextInput' />
-            <FormAuthSignUpItem ItemName='رمز عبور' InputType='password'  IDNAME='password1' />
-            <FormAuthSignUpItem ItemName='تکرار رمز عبور' InputType='password' IDNAME='password2'/>
+            <FormAuthSignUpItem ItemName='رمز عبور' InputType='password' IDNAME='password1' />
+            <FormAuthSignUpItem ItemName='تکرار رمز عبور' InputType='password' IDNAME='password2' />
             <InputSubmit type="submit" value="ثبت اطلاعات" className="sub" />
         </FormLogin>
     )
