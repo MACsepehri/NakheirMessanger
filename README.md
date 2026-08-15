@@ -1,26 +1,39 @@
-<div align="center">
-  # NakheirMessanger
+<div>
+  <h1>NakheirMessanger</h1>
   
-  پیام‌رسان تحت وب ساخته‌شده با **React**، **Flask** و **MySQL**.
+  <p>پیام‌رسان تحت وب ساخته‌شده با <strong>React</strong>، <strong>Flask</strong> و <strong>MySQL</strong>.</p>
   
-  ## امکانات
+  <h2>امکانات</h2>
+  <ul>
+    <li>ارسال و دریافت پیام در لحظه</li>
+    <li>احراز هویت کاربران</li>
+    <li>مدیریت پروفایل و مخاطبین</li>
+    <li>ذخیره‌سازی امن پیام‌ها در دیتابیس</li>
+    <li>رابط کاربری واکنش‌گرا (Responsive)</li>
+  </ul>
   
-  - ارسال و دریافت پیام در لحظه
-  - احراز هویت کاربران
-  - مدیریت پروفایل و مخاطبین
-  - ذخیره‌سازی امن پیام‌ها در دیتابیس
-  - رابط کاربری واکنش‌گرا (Responsive)
+  <h2>تکنولوژی‌ها</h2>
+  <table>
+    <tr>
+      <th>لایه</th>
+      <th>تکنولوژی</th>
+    </tr>
+    <tr>
+      <td>فرانت‌اند</td>
+      <td>React, JavaScript, HTML, CSS</td>
+    </tr>
+    <tr>
+      <td>بک‌اند</td>
+      <td>Python, Flask, Flask-SQLAlchemy</td>
+    </tr>
+    <tr>
+      <td>دیتابیس</td>
+      <td>MySQL</td>
+    </tr>
+  </table>
   
-  ## تکنولوژی‌ها
-  
-  | لایه | تکنولوژی |
-  |------|----------|
-  | فرانت‌اند | React, JavaScript, HTML, CSS |
-  | بک‌اند | Python, Flask, Flask-SQLAlchemy |
-  | دیتابیس | MySQL |
-  
-  
-  
-  
-  تحت لایسنس GNU General Public License v3.0
+  <div style="text-align: center; color: #555; padding: 15px; background: #fafafa; border-radius: 8px;">
+    تحت لایسنس <strong>GNU General Public License v3.0</strong>
+  </div>
 </div>
+`
