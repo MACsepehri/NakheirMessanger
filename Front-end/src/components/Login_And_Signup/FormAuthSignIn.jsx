@@ -18,6 +18,8 @@ let FormAuthSignIn = ({ name }) => {
         console.log(data);
         if (input.value.length > 0 && input2.value.length > 0 && input3.value.length > 0) {
             input3.style.borderBottom = '2px solid #9112BC';
+            ok = true;
+
             alertpass3.innerHTML = '';
             if (data.same) {
                 alertpass.innerHTML = 'این رمز تکراری است'
@@ -25,7 +27,6 @@ let FormAuthSignIn = ({ name }) => {
             } else {
                 input.style.borderBottom = '2px solid #9112BC';
                 alertpass.innerHTML = ''
-                ok = true;
 
             }
             if (input.value !== input2.value) {
@@ -36,7 +37,6 @@ let FormAuthSignIn = ({ name }) => {
             else {
                 input2.style.borderBottom = '2px solid #9112BC';
                 alertpass2.innerHTML = ''
-                ok = true;
 
             }
         } else {
