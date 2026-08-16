@@ -98,11 +98,11 @@ def api_login():
         or password is None
         or public_name is None
     ):
-        return {
+        return jsonify({
             "success": False,
             "error": "لطفا تمامی مقادیر را بفرستید.",
             "code": ERROR_KEY["null"]
-        }
+        })
 
     user = User.query.filter_by(username=username).first()
 
@@ -112,7 +112,7 @@ def api_login():
             and user.password == password
             and user.public_name == public_name
         ):
-            return {
+            return jsonify({
                 "success": True,
                 "action": "login",
                 "userData": {
@@ -122,13 +122,13 @@ def api_login():
                     "public_name": user.public_name
                 },
                 "code": ERROR_KEY["success"]
-            }
+            })
 
-        return {
+        return jsonify({
             "success": False,
             "error": "اطلاعات ورود اشتباه است.",
             "code": ERROR_KEY["404"]
-        }
+        })
 
     email_exists = User.query.filter_by(email=email).first()
     public_name_exists = User.query.filter_by(
@@ -136,11 +136,11 @@ def api_login():
     ).first()
 
     if email_exists or public_name_exists:
-        return {
+        return jsonify({
             "success": False,
             "error": "نام کاربری، ایمیل یا نام عمومی قبلا استفاده شده است.",
             "code": ERROR_KEY["similar_data"]
-        }
+        })
 
     new_user = User(
         username=username,
@@ -152,7 +152,7 @@ def api_login():
     db.session.add(new_user)
     db.session.commit()
 
-    return {
+    return jsonify({
         "success": True,
         "action": "register",
         "userData": {
@@ -162,7 +162,7 @@ def api_login():
             "public_name": new_user.public_name
         },
         "code": ERROR_KEY["success"]
-    }
+    })
 
 
 @app.route("/create-chat", methods=["POST"])

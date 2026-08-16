@@ -45,9 +45,14 @@ let FormAuthSignIn = ({ name }) => {
             ok = false;
         }
         if(ok){
-            let result = await fetch(`http://127.0.0.1:5000/api-login?username=کاربر جدید&password=${input2.value}&email=none&public_name=${input3.value}`);
-            console.log(result);
-            
+            fetch(`http://127.0.0.1:5000/api-login?username=کاربر جدید&password=${input2.value}&email=a@gmai.com&public_name=${input3.value}`)
+            .then(res => {
+                return res.json()
+            })
+            .then((dt2) => {
+                console.log(dt2);
+                
+            })            
         }
 
 
