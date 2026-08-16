@@ -12,8 +12,9 @@ export let InputItem = styled.input
     `
     width:80%;
     height:35px;
-    background: transparent;
+    background: transparent !important;
     text-align:center;
+    color: white !important;
     border:0;
     border-bottom : 2px solid #680a87;
     outline:none;

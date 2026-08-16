@@ -4,10 +4,12 @@ import { LoginPage } from './pages/LoginPage'
 import NotFoundPage from './pages/Notfound'
 import MainPage from './pages/Mainpage'
 import { SignUpPage } from './pages/SignupPage'
+import { FuncContextProviderManager } from './Context/MessengerContext'
 
 function App() {
 
   return (
+    <FuncContextProviderManager>
     <Router>
       <Routes>
         <Route path='*' element={<NotFoundPage />} />
@@ -16,6 +18,7 @@ function App() {
         <Route path='/signup' element={<SignUpPage/>} />
       </Routes>
     </Router>
+    </FuncContextProviderManager>
   )
 }
 

@@ -1,7 +1,9 @@
-import { useEffect } from 'react'
+import { useEffect ,useContext} from 'react'
 import { FormLogin, InputSubmit } from '../../styled_components/StyledLoginPage'
 import FormAuthSignUpItem from './FormAuthSignUpItem'
+import { MessengerContext } from '../../Context/MessengerContext';
 let FormAuthSignIn = ({ name }) => {
+    let dt = useContext(MessengerContext);
     let SubmitHandler = async () => {
         event.preventDefault();
         let input = document.getElementById('password1');
@@ -22,7 +24,7 @@ let FormAuthSignIn = ({ name }) => {
             input2.style.borderBottom = '2px solid red';
             alertpass2.innerHTML = 'این رمز با رمز بالا برابر نیست'
         }
-        else{
+        else {
             input2.style.borderBottom = '2px solid #9112BC';
             alertpass2.innerHTML = ''
 
@@ -35,7 +37,7 @@ let FormAuthSignIn = ({ name }) => {
             <FormAuthSignUpItem ItemName='نام کاربری' InputType='text' IDNAME='TextInput' />
             <FormAuthSignUpItem ItemName='رمز عبور' InputType='password' IDNAME='password1' />
             <FormAuthSignUpItem ItemName='تکرار رمز عبور' InputType='password' IDNAME='password2' />
-            <InputSubmit type="submit" value="ثبت اطلاعات" className="sub" />
+            <InputSubmit type="submit" value="ثبت اطلاعات" className="sub" disabled={!dt.ActiveForm} />
         </FormLogin>
     )
 }
