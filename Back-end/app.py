@@ -29,7 +29,6 @@ ERROR_KEY = {
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique=True, nullable=False)
-    email = db.Column(db.String, unique=True, nullable=False)
     password = db.Column(db.String, nullable=False)
     public_name = db.Column(db.String, unique=True, nullable=False)
     chats = db.Column(db.JSON, default=list)
@@ -76,95 +75,6 @@ def join_user(data):
     })
 
 # routes
-@app.route("/api-login")
-def api_login():
-    # json_data = request.get_json(silent=True)
-
-    # if not json_data:
-    #     return {
-    #         "success": False,
-    #         "error": "داده‌ای ارسال نشده است.",
-    #         "code": ERROR_KEY["null"]
-    #     }
-
-    username = request.args.get("username")
-    email = request.args.get("email")
-    password = request.args.get("password")
-    public_name = request.args.get("public_name")
-
-    if (
-        username is None
-        or email is None
-        or password is None
-        or public_name is None
-    ):
-        return jsonify({
-            "success": False,
-            "error": "لطفا تمامی مقادیر را بفرستید.",
-            "code": ERROR_KEY["null"]
-        })
-
-    user = User.query.filter_by(username=username).first()
-
-    if user:
-        if (
-            user.email == email
-            and user.password == password
-            and user.public_name == public_name
-        ):
-            return jsonify({
-                "success": True,
-                "action": "login",
-                "userData": {
-                    "id": user.id,
-                    "username": user.username,
-                    "email": user.email,
-                    "public_name": user.public_name
-                },
-                "code": ERROR_KEY["success"]
-            })
-
-        return jsonify({
-            "success": False,
-            "error": "اطلاعات ورود اشتباه است.",
-            "code": ERROR_KEY["404"]
-        })
-
-    email_exists = User.query.filter_by(email=email).first()
-    public_name_exists = User.query.filter_by(
-        public_name=public_name
-    ).first()
-
-    if email_exists or public_name_exists:
-        return jsonify({
-            "success": False,
-            "error": "نام کاربری، ایمیل یا نام عمومی قبلا استفاده شده است.",
-            "code": ERROR_KEY["similar_data"]
-        })
-
-    new_user = User(
-        username=username,
-        email=email,
-        password=password,
-        public_name=public_name
-    )
-
-    db.session.add(new_user)
-    db.session.commit()
-
-    return jsonify({
-        "success": True,
-        "action": "register",
-        "userData": {
-            "id": new_user.id,
-            "username": new_user.username,
-            "email": new_user.email,
-            "public_name": new_user.public_name
-        },
-        "code": ERROR_KEY["success"]
-    })
-
-
 @app.route("/create-chat", methods=["POST"])
 def create_chat():
     json_data = request.get_json(silent=True)
@@ -389,9 +299,9 @@ def send_message():
 
 @app.route("/main-login-checker")
 def mainLoginChecker():
-    l = [{"name": 'آرتین', "public_name": 'artin231', "email": 'leiartrezjah@gmail.com'}]
+    l = [{"name": request.args.get("name"), "public_name": request.args.get("public_name")}]
     for user in User.query.all():
-        l.append({"name": user.username, "public_name": user.password, "email": user.email})
+        l.append({"name": user.username, "public_name": user.password})
     return {"users": l}
 
 @app.route("/check-password")
@@ -403,6 +313,34 @@ def checkPassword():
         if user.password == str(password):
             return {"same": True}
     return {"same": False}
+
+@app.route("/register")
+def register():
+    name = request.args.get("name", None)
+    password = request.args.get("password", None)
+    public_name = request.args.get("public_name", None)
+    if name is None or password is None or public_name is None:
+        return {"success": False, "error": "لطفا تمامی ورودی ها را وارد کنید."}
+    else:
+        user = User.query.filter_by(username=name, password=password, public_name=public_name)
+        if user is not None:
+            return {"success": False, "error": "کاربری با این اطلاعات وجود دارد."}
+        user = User(username=name, password=password, public_name=public_name)
+        db.session.add(user)
+        db.session.commit()
+        return {"success": True}
+
+@app.route("/login")
+def login():
+    password = request.args.get("password", None)
+    public_name = request.args.get("public_name", None)
+    if password is None or public_name is None:
+        return {"success": False, "error": "لطفا تمامی ورودی ها را وارد کنید."}
+    else:
+        user = User.query.filter_by(password=password, public_name=public_name)
+        if user is not None:
+            return {"success": True}
+        return {"success": False, "error": "کاربری با این اطلاعات وجود ندارد."}
 
 if __name__ == "__main__":
     socketio.run(app, debug=True, port=8080, host="0.0.0.0")
