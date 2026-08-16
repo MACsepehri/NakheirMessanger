@@ -10,7 +10,6 @@
 
 <p>
 <strong>A modern real-time web messenger</strong><br>
-Built with <strong>React</strong>, <strong>Flask</strong> and <strong>MySQL</strong>
 </p>
 
 </div>
