@@ -1,4 +1,4 @@
-import { useEffect ,useContext} from 'react'
+import { useEffect, useContext } from 'react'
 import { FormLogin, InputSubmit } from '../../styled_components/StyledLoginPage'
 import FormAuthSignUpItem from './FormAuthSignUpItem'
 import { MessengerContext } from '../../Context/MessengerContext';
@@ -8,27 +8,37 @@ let FormAuthSignIn = ({ name }) => {
         event.preventDefault();
         let input = document.getElementById('password1');
         let input2 = document.getElementById('password2');
+        let input3 = document.getElementById('TextInput');
         let res = await fetch('http://127.0.0.1:5000/check-password?password=' + input.value);
         let alertpass = document.querySelector('.alertpassword1');
         let alertpass2 = document.querySelector('.alertpassword2');
+        let alertpass3 = document.querySelector('.alertTextInput');
         let data = await res.json();
         console.log(data);
-        if (data.same) {
-            input.style.borderBottom = '2px solid red';
-            alertpass.innerHTML = 'این رمز تکراری است'
-        } else {
-            input.style.borderBottom = '2px solid #9112BC';
-            alertpass.innerHTML = ''
-        }
-        if (input.value !== input2.value) {
-            input2.style.borderBottom = '2px solid red';
-            alertpass2.innerHTML = 'این رمز با رمز بالا برابر نیست'
-        }
-        else {
-            input2.style.borderBottom = '2px solid #9112BC';
-            alertpass2.innerHTML = ''
+        if (input.value.length > 0 && input2.value.length > 0 && input3.value.length > 0) {
+            input3.style.borderBottom = '2px solid #9112BC';
+            alertpass3.innerHTML = '';
+            if (data.same) {
+                alertpass.innerHTML = 'این رمز تکراری است'
+            } else {
+                input.style.borderBottom = '2px solid #9112BC';
+                alertpass.innerHTML = ''
+            }
+            if (input.value !== input2.value) {
+                input2.style.borderBottom = '2px solid red';
+                alertpass2.innerHTML = 'این رمز با رمز بالا برابر نیست'
+            }
+            else {
+                input2.style.borderBottom = '2px solid #9112BC';
+                alertpass2.innerHTML = ''
 
+            }
+        } else {
+            input3.style.borderBottom = '2px solid red';
+            alertpass3.innerHTML = 'یکی از ورودی ها خالی است';
         }
+
+
 
     }
     return (
