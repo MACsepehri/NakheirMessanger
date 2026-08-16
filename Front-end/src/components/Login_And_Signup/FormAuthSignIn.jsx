@@ -13,6 +13,7 @@ let FormAuthSignIn = ({ name }) => {
         let alertpass = document.querySelector('.alertpassword1');
         let alertpass2 = document.querySelector('.alertpassword2');
         let alertpass3 = document.querySelector('.alertTextInput');
+        let ok = true;
         let data = await res.json();
         console.log(data);
         if (input.value.length > 0 && input2.value.length > 0 && input3.value.length > 0) {
@@ -20,22 +21,33 @@ let FormAuthSignIn = ({ name }) => {
             alertpass3.innerHTML = '';
             if (data.same) {
                 alertpass.innerHTML = 'این رمز تکراری است'
+                ok = false;
             } else {
                 input.style.borderBottom = '2px solid #9112BC';
                 alertpass.innerHTML = ''
+                ok = true;
+
             }
             if (input.value !== input2.value) {
                 input2.style.borderBottom = '2px solid red';
                 alertpass2.innerHTML = 'این رمز با رمز بالا برابر نیست'
+                ok = false;
             }
             else {
                 input2.style.borderBottom = '2px solid #9112BC';
                 alertpass2.innerHTML = ''
+                ok = true;
 
             }
         } else {
             input3.style.borderBottom = '2px solid red';
             alertpass3.innerHTML = 'یکی از ورودی ها خالی است';
+            ok = false;
+        }
+        if(ok){
+            let result = await fetch(`http://127.0.0.1:5000/api-login?username=کاربر جدید&password=${input2.value}&email=none&public_name=${input3.value}`);
+            console.log(result);
+            
         }
 
 
