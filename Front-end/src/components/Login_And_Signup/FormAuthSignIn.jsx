@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react'
+import { useEffect, useContext, use } from 'react'
 import { FormLogin, FormLogin2, InputSubmit } from '../../styled_components/StyledLoginPage'
 import FormAuthSignUpItem from './FormAuthSignUpItem'
 import { MessengerContext } from '../../Context/MessengerContext';
@@ -19,12 +19,29 @@ let FormAuthSignIn = ({ name }) => {
         let alertpass3 = document.querySelector('.alertTextInput');
         let ok = true;
         let data = await res.json();
+        let users = []
         console.log(data);
         if (input.value.length > 0 && input2.value.length > 0 && input3.value.length > 0 && input4.value.length > 0) {
             input3.style.borderBottom = '2px solid #9112BC';
             ok = true;
-
             alertpass3.innerHTML = '';
+            fetch('http://127.0.0.1:5000/main-login-checker')
+                .then((res) => {
+                    return res.json()
+                })
+                .then((data) => {
+                    users = data.users;
+                    console.log(users)
+                })
+            users.forEach((i) => {
+                if (i.public_name == input3.value) {
+                    input3.style.borderBottom = '2px solid red';
+                    alertpass3.innerHTML = 'این نام کاربری وجود دارد';
+                } else {
+                    input3.style.borderBottom = '2px solid #9112BC';
+                    alertpass3.innerHTML = '';
+                }
+            })
             if (data.same) {
                 alertpass.innerHTML = 'این رمز تکراری است'
                 ok = false;
@@ -49,6 +66,8 @@ let FormAuthSignIn = ({ name }) => {
             ok = false;
         }
         if (ok) {
+            console.log(`http://127.0.0.1:5000/register?name=${input4.value}&password=${input.value}&public_name=${input3.value}`);
+            
             fetch(`http://127.0.0.1:5000/register?name=${input4.value}&password=${input.value}&public_name=${input3.value}`)
                 .then(res => {
                     return res.json()

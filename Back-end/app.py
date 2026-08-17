@@ -301,7 +301,7 @@ def send_message():
 def mainLoginChecker():
     l = []
     for user in User.query.all():
-        l.append({"name": user.username, "public_name": user.password})
+        l.append({"name": user.username, "public_name": user.public_name})
     return {"users": l}
 
 @app.route("/check-password")
@@ -320,6 +320,7 @@ def register():
         name = request.args.get("name", None)
         password = request.args.get("password", None)
         public_name = request.args.get("public_name", None)
+        print(name,password,public_name)
         if name is None or password is None or public_name is None:
             return {"success": False, "error": "لطفا تمامی ورودی ها را وارد کنید."}
         else:
