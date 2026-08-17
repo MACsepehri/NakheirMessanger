@@ -316,16 +316,19 @@ def checkPassword():
 
 @app.route("/register")
 def register():
-    name = request.args.get("name", None)
-    password = request.args.get("password", None)
-    public_name = request.args.get("public_name", None)
-    if name is None or password is None or public_name is None:
-        return {"success": False, "error": "لطفا تمامی ورودی ها را وارد کنید."}
-    else:
-        user = User(username=name, password=password, public_name=public_name)
-        db.session.add(user)
-        db.session.commit()
-        return {"success": True}
+    try:
+        name = request.args.get("name", None)
+        password = request.args.get("password", None)
+        public_name = request.args.get("public_name", None)
+        if name is None or password is None or public_name is None:
+            return {"success": False, "error": "لطفا تمامی ورودی ها را وارد کنید."}
+        else:
+            user = User(username=name, password=password, public_name=public_name)
+            db.session.add(user)
+            db.session.commit()
+            return {"success": True}
+    except:
+        return {'succes':False}
 
 @app.route("/login")
 def login():
