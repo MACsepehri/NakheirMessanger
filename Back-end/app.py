@@ -304,15 +304,20 @@ def mainLoginChecker():
         l.append({"name": user.username, "public_name": user.public_name})
     return {"users": l}
 
-@app.route("/check-password")
+@app.route("/check-input")
 def checkPassword():
+    status = {'pass_same':False,'name_same':False}
     password = request.args.get("password")
+    name = request.args.get('name')
     print(str(password))
     for user in User.query.all():
-        print(user.password)
+        print(user.password,user.username)
+        print(password,name)
         if user.password == str(password):
-            return {"same": True}
-    return {"same": False}
+            status["pass_same"] = True
+        if user.public_name == str(name):
+            status["name_same"] = True
+    return status
 
 @app.route("/register")
 def register():

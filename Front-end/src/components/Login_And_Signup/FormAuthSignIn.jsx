@@ -7,67 +7,69 @@ import withReactContent from 'sweetalert2-react-content'
 
 let FormAuthSignIn = ({ name }) => {
     let dt = useContext(MessengerContext);
+
     let SubmitHandler = async () => {
         event.preventDefault();
+
         let input = document.getElementById('password1');
         let input2 = document.getElementById('password2');
         let input3 = document.getElementById('TextInput');
         let input4 = document.getElementById('NameInput');
-        let res = await fetch('http://127.0.0.1:5000/check-password?password=' + input.value);
+
+
+        let res = await fetch('http://127.0.0.1:5000/check-input?password=' + input.value + '&name=' + input3.value);
+        let data = await res.json();
+
         let alertpass = document.querySelector('.alertpassword1');
         let alertpass2 = document.querySelector('.alertpassword2');
         let alertpass3 = document.querySelector('.alertTextInput');
+
         let ok = true;
-        let data = await res.json();
-        let users = []
         console.log(data);
+
         if (input.value.length > 0 && input2.value.length > 0 && input3.value.length > 0 && input4.value.length > 0) {
             input3.style.borderBottom = '2px solid #9112BC';
             ok = true;
             alertpass3.innerHTML = '';
-            fetch('http://127.0.0.1:5000/main-login-checker')
-                .then((res) => {
-                    return res.json()
-                })
-                .then((data) => {
-                    users = data.users;
-                    console.log(users)
-                })
-            users.forEach((i) => {
-                if (i.public_name == input3.value) {
-                    input3.style.borderBottom = '2px solid red';
-                    alertpass3.innerHTML = 'این نام کاربری وجود دارد';
-                } else {
-                    input3.style.borderBottom = '2px solid #9112BC';
-                    alertpass3.innerHTML = '';
-                }
-            })
-            if (data.same) {
-                alertpass.innerHTML = 'این رمز تکراری است'
+
+
+            if (data.pass_same) {
+                input.style.borderBottom = '2px solid red';
+                alertpass.innerHTML = 'این رمز تکراری است';
                 ok = false;
             } else {
                 input.style.borderBottom = '2px solid #9112BC';
-                alertpass.innerHTML = ''
-
+                alertpass.innerHTML = '';
             }
+
+            if (data.name_same) {
+                input3.style.borderBottom = '2px solid red';
+                alertpass3.innerHTML = 'این نام کاربری تکراری است';
+                ok = false;
+            } else {
+                input3.style.borderBottom = '2px solid #9112BC';
+                alertpass3.innerHTML = '';
+            }
+
+
             if (input.value !== input2.value) {
                 input2.style.borderBottom = '2px solid red';
-                alertpass2.innerHTML = 'این رمز با رمز بالا برابر نیست'
+                alertpass2.innerHTML = 'این رمز با رمز بالا برابر نیست';
                 ok = false;
             }
             else {
                 input2.style.borderBottom = '2px solid #9112BC';
-                alertpass2.innerHTML = ''
+                alertpass2.innerHTML = '';
 
             }
+
         } else {
             input3.style.borderBottom = '2px solid red';
             alertpass3.innerHTML = 'یکی از ورودی ها خالی است';
             ok = false;
         }
         if (ok) {
-            console.log(`http://127.0.0.1:5000/register?name=${input4.value}&password=${input.value}&public_name=${input3.value}`);
-            
+
             fetch(`http://127.0.0.1:5000/register?name=${input4.value}&password=${input.value}&public_name=${input3.value}`)
                 .then(res => {
                     return res.json()
