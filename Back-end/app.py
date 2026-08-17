@@ -29,7 +29,7 @@ ERROR_KEY = {
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique=True, nullable=False)
-    password = db.Column(db.String, nullable=False)
+    password = db.Column(db.String, nullable=True)
     public_name = db.Column(db.String, unique=True, nullable=False)
     chats = db.Column(db.JSON, default=list)
 

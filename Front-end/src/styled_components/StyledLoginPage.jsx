@@ -39,8 +39,28 @@ export let FormLogin = styled.form
     gap:40px;
     &:hover{
     transform:translateY(-1%);
+    padding-bottom:10px ;
     }
     `
+
+
+export let FormLogin2 = styled.form
+    `
+    padding-top:1%;
+    width:450px;
+    min-height:600px;
+    background-color: #282828;
+    border-radius:40px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:40px;
+    padding-bottom:10px ;
+    &:hover{
+    transform:translateY(-1%);
+    }
+    `
+
 
 
 export let InputSubmit = styled.input

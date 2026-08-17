@@ -1,5 +1,5 @@
 import { useEffect, useContext } from 'react'
-import { FormLogin, InputSubmit } from '../../styled_components/StyledLoginPage'
+import { FormLogin,FormLogin2, InputSubmit } from '../../styled_components/StyledLoginPage'
 import FormAuthSignUpItem from './FormAuthSignUpItem'
 import { MessengerContext } from '../../Context/MessengerContext';
 let FormAuthSignIn = ({ name }) => {
@@ -59,13 +59,14 @@ let FormAuthSignIn = ({ name }) => {
 
     }
     return (
-        <FormLogin action="" className="login" onSubmit={() => { SubmitHandler() }}>
+        <FormLogin2 action="" className="login" onSubmit={() => { SubmitHandler() }}>
             <h1>{name}</h1>
             <FormAuthSignUpItem ItemName='نام کاربری' InputType='text' IDNAME='TextInput' />
+            <FormAuthSignUpItem ItemName='نام' InputType='password' DNAME='NameInput'/>
             <FormAuthSignUpItem ItemName='رمز عبور' InputType='password' IDNAME='password1' />
             <FormAuthSignUpItem ItemName='تکرار رمز عبور' InputType='password' IDNAME='password2' />
             <InputSubmit type="submit" value="ثبت اطلاعات" className="sub" disabled={!dt.ActiveForm} />
-        </FormLogin>
+        </FormLogin2>
     )
 }
 
