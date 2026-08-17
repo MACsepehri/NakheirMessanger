@@ -55,11 +55,18 @@ let FormAuthSignIn = ({ name }) => {
                 })
                 .then((dt2) => {
                     console.log(dt2);
-                    Swal.fire({
-                        title: "The Internet?",
-                        text: "That thing is still around?",
-                        icon: "question"
-                    });
+                    if (dt2.success) {
+                        Swal.fire({
+                            title: "اکانت شما با موفقیت ساخته شد",
+                            icon: "success"
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "مشکلی پیش آمد",
+                            icon: "error"
+                        });
+                    }
+
                 })
         }
 
