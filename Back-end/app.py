@@ -30,7 +30,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique=False, nullable=False)
     password = db.Column(db.String, nullable=True,unique=True)
-    public_name = db.Column(db.String, unique=True, nullable=False)
+    public_name = db.Column(db.String, unique=False, nullable=False)
     chats = db.Column(db.JSON, default=list)
 
 class Chat(db.Model):
@@ -299,7 +299,7 @@ def send_message():
 
 @app.route("/main-login-checker")
 def mainLoginChecker():
-    l = [{"name": request.args.get("name"), "public_name": request.args.get("public_name")}]
+    l = []
     for user in User.query.all():
         l.append({"name": user.username, "public_name": user.password})
     return {"users": l}

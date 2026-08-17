@@ -1,7 +1,10 @@
 import { useEffect, useContext } from 'react'
-import { FormLogin,FormLogin2, InputSubmit } from '../../styled_components/StyledLoginPage'
+import { FormLogin, FormLogin2, InputSubmit } from '../../styled_components/StyledLoginPage'
 import FormAuthSignUpItem from './FormAuthSignUpItem'
 import { MessengerContext } from '../../Context/MessengerContext';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 let FormAuthSignIn = ({ name }) => {
     let dt = useContext(MessengerContext);
     let SubmitHandler = async () => {
@@ -45,15 +48,19 @@ let FormAuthSignIn = ({ name }) => {
             alertpass3.innerHTML = 'یکی از ورودی ها خالی است';
             ok = false;
         }
-        if(ok){
+        if (ok) {
             fetch(`http://127.0.0.1:5000/register?name=${input4.value}&password=${input.value}&public_name=${input3.value}`)
-            .then(res => {
-                return res.json()
-            })
-            .then((dt2) => {
-                console.log(dt2);
-                
-            })            
+                .then(res => {
+                    return res.json()
+                })
+                .then((dt2) => {
+                    console.log(dt2);
+                    Swal.fire({
+                        title: "The Internet?",
+                        text: "That thing is still around?",
+                        icon: "question"
+                    });
+                })
         }
 
 
@@ -63,7 +70,7 @@ let FormAuthSignIn = ({ name }) => {
         <FormLogin2 action="" className="login" onSubmit={() => { SubmitHandler() }}>
             <h1>{name}</h1>
             <FormAuthSignUpItem ItemName='نام کاربری' InputType='text' IDNAME='TextInput' />
-            <FormAuthSignUpItem ItemName='نام' InputType='text' IDNAME='NameInput'/>
+            <FormAuthSignUpItem ItemName='نام' InputType='text' IDNAME='NameInput' />
             <FormAuthSignUpItem ItemName='رمز عبور' InputType='password' IDNAME='password1' />
             <FormAuthSignUpItem ItemName='تکرار رمز عبور' InputType='password' IDNAME='password2' />
             <InputSubmit type="submit" value="ثبت اطلاعات" className="sub" disabled={!dt.ActiveForm} />
