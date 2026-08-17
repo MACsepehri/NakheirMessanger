@@ -28,8 +28,8 @@ ERROR_KEY = {
 # database
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String, unique=True, nullable=False)
-    password = db.Column(db.String, nullable=True)
+    username = db.Column(db.String, unique=False, nullable=False)
+    password = db.Column(db.String, nullable=True,unique=True)
     public_name = db.Column(db.String, unique=True, nullable=False)
     chats = db.Column(db.JSON, default=list)
 
@@ -322,9 +322,6 @@ def register():
     if name is None or password is None or public_name is None:
         return {"success": False, "error": "لطفا تمامی ورودی ها را وارد کنید."}
     else:
-        user = User.query.filter_by(username=name, password=password, public_name=public_name)
-        if user is not None:
-            return {"success": False, "error": "کاربری با این اطلاعات وجود دارد."}
         user = User(username=name, password=password, public_name=public_name)
         db.session.add(user)
         db.session.commit()

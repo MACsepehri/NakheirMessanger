@@ -9,6 +9,7 @@ let FormAuthSignIn = ({ name }) => {
         let input = document.getElementById('password1');
         let input2 = document.getElementById('password2');
         let input3 = document.getElementById('TextInput');
+        let input4 = document.getElementById('NameInput');
         let res = await fetch('http://127.0.0.1:5000/check-password?password=' + input.value);
         let alertpass = document.querySelector('.alertpassword1');
         let alertpass2 = document.querySelector('.alertpassword2');
@@ -16,7 +17,7 @@ let FormAuthSignIn = ({ name }) => {
         let ok = true;
         let data = await res.json();
         console.log(data);
-        if (input.value.length > 0 && input2.value.length > 0 && input3.value.length > 0) {
+        if (input.value.length > 0 && input2.value.length > 0 && input3.value.length > 0 && input4.value.length > 0) {
             input3.style.borderBottom = '2px solid #9112BC';
             ok = true;
 
@@ -45,7 +46,7 @@ let FormAuthSignIn = ({ name }) => {
             ok = false;
         }
         if(ok){
-            fetch(`http://127.0.0.1:5000/api-login?username=کاربر جدید&password=${input2.value}&email=a@gmai.com&public_name=${input3.value}`)
+            fetch(`http://127.0.0.1:5000/register?name=${input4.value}&password=${input.value}&public_name=${input3.value}`)
             .then(res => {
                 return res.json()
             })
@@ -62,7 +63,7 @@ let FormAuthSignIn = ({ name }) => {
         <FormLogin2 action="" className="login" onSubmit={() => { SubmitHandler() }}>
             <h1>{name}</h1>
             <FormAuthSignUpItem ItemName='نام کاربری' InputType='text' IDNAME='TextInput' />
-            <FormAuthSignUpItem ItemName='نام' InputType='password' DNAME='NameInput'/>
+            <FormAuthSignUpItem ItemName='نام' InputType='text' IDNAME='NameInput'/>
             <FormAuthSignUpItem ItemName='رمز عبور' InputType='password' IDNAME='password1' />
             <FormAuthSignUpItem ItemName='تکرار رمز عبور' InputType='password' IDNAME='password2' />
             <InputSubmit type="submit" value="ثبت اطلاعات" className="sub" disabled={!dt.ActiveForm} />
