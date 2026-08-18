@@ -1,12 +1,50 @@
 import { FormLogin, InputSubmit } from '../../styled_components/StyledLoginPage'
 import FormAuthItem from './FormAuthItem'
-let FormAuth = ({name}) => {
+let FormAuth = ({ name }) => {
+    let SubmitLoginHandler = () => {
+        event.preventDefault();
+        let ok = true;
+
+        let input_name = document.querySelector('input#TextInput');
+        let input_pass1 = document.querySelector('input#PasswordInput1');
+        let input_pass2 = document.querySelector('input#PasswordInput2');
+
+        let alert_name = document.querySelector('h6.alertTextInput');
+        let alert_pass1 = document.querySelector('h6.alertPasswordInput1');
+        let alert_pass2 = document.querySelector('h6.alertPasswordInput2');
+
+        if (input_name.value == 0 || input_pass1.value == 0 || input_pass2.value == 0) {
+            input_name.style.borderBottom = '2px solid red';
+            alert_name.innerHTML = 'یکی از ورودی ها خالی هست';
+            ok = false;
+
+        } else {
+            input_name.style.borderBottom = '2px solid #9112BC';
+            alert_name.innerHTML = '';
+            ok = true;
+        }
+
+        if (input_pass1.value != input_pass2.value) {
+            console.log(input_pass1.value, input_pass2.value);
+
+            input_pass2.style.borderBottom = '2px solid red';
+            alert_pass2.innerHTML = 'دو رمز عبور باهم برابر نیستند';
+            ok = false;
+        } else {
+            console.log(1);
+
+            input_pass2.style.borderBottom = '2px solid #9112BC';
+            alert_pass2.innerHTML = '';
+            ok = true;
+        }
+    }
+
     return (
-        <FormLogin action="" className="login">
+        <FormLogin action="" className="login" onSubmit={() => { SubmitLoginHandler() }}>
             <h1>{name}</h1>
-            <FormAuthItem ItemName='نام کاربری' InputType='text' />
-            <FormAuthItem ItemName='رمز عبور' InputType='password' />
-            <FormAuthItem ItemName='تکرار رمز عبور' InputType='password' />
+            <FormAuthItem ItemName='نام کاربری' InputType='text' IDNAME='TextInput' />
+            <FormAuthItem ItemName='رمز عبور' InputType='password' IDNAME='PasswordInput1' />
+            <FormAuthItem ItemName='تکرار رمز عبور' InputType='password' IDNAME='PasswordInput2' />
             <InputSubmit type="submit" value="ثبت اطلاعات" className="sub" />
         </FormLogin>
     )

@@ -55,7 +55,7 @@ export let FormLogin2 = styled.form
     flex-direction:column;
     align-items:center;
     gap:40px;
-    padding-bottom:10px ;
+    padding-bottom:20px ;
     &:hover{
     transform:translateY(-1%);
     }
