@@ -31,7 +31,6 @@ class User(db.Model):
     username = db.Column(db.String, unique=False, nullable=False)
     password = db.Column(db.String, nullable=True,unique=True)
     public_name = db.Column(db.String, unique=False, nullable=False)
-    chats = db.Column(db.JSON, default=list)
 
 class Chat(db.Model):
     id = db.Column(db.Integer, primary_key=True)
