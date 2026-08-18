@@ -1,12 +1,18 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { redirect, useNavigate } from "react-router-dom";
-import {styled} from 'styled-components';
+import { styled } from 'styled-components';
+import { MessengerContext } from "../Context/MessengerContext";
 let MainPage = () => {
     const navigate = useNavigate();
     let login = false;
+
     useEffect(() => {
-        if (!login) {
+        const storedName = sessionStorage.getItem('user');
+        if (!storedName) {
             navigate('/login')
+        }else{
+            console.log(storedName);
+            
         }
     }, [login, navigate])
 
