@@ -17,25 +17,22 @@ let FormAuth = ({ name }) => {
             input_name.style.borderBottom = '2px solid red';
             alert_name.innerHTML = 'یکی از ورودی ها خالی هست';
             ok = false;
-
         } else {
             input_name.style.borderBottom = '2px solid #9112BC';
             alert_name.innerHTML = '';
-            ok = true;
         }
 
         if (input_pass1.value != input_pass2.value) {
-            console.log(input_pass1.value, input_pass2.value);
-
             input_pass2.style.borderBottom = '2px solid red';
             alert_pass2.innerHTML = 'دو رمز عبور باهم برابر نیستند';
             ok = false;
         } else {
-            console.log(1);
-
             input_pass2.style.borderBottom = '2px solid #9112BC';
             alert_pass2.innerHTML = '';
-            ok = true;
+        }
+        if (ok) {
+            console.log(11111111111111);
+
         }
     }
 
