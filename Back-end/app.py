@@ -342,7 +342,8 @@ def login():
     if password is None or public_name is None:
         return {"success": False, "error": "لطفا تمامی ورودی ها را وارد کنید."}
     else:
-        user = User.query.filter_by(password=password, public_name=public_name)
+        user = User.query.filter_by(password=password, public_name=public_name).first()
+        print(user)
         if user is not None:
             return {"success": True}
         return {"success": False, "error": "کاربری با این اطلاعات وجود ندارد."}

@@ -1,5 +1,8 @@
 import { FormLogin, InputSubmit } from '../../styled_components/StyledLoginPage'
 import FormAuthItem from './FormAuthItem'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 let FormAuth = ({ name }) => {
     let SubmitLoginHandler = () => {
         event.preventDefault();
@@ -31,8 +34,20 @@ let FormAuth = ({ name }) => {
             alert_pass2.innerHTML = '';
         }
         if (ok) {
-            console.log(11111111111111);
+            fetch(`http://127.0.0.1:5000/login?password=${input_pass1.value}&public_name=${input_pass2.value}`)
+                .then((res) => {
+                    return res.json()
+                })
+                .then((data) => {
+                    console.log(data);
+                    if (data.success == false) {
+                            Swal.fire({
+                                title: data.error,
+                                icon: "error"
+                            });
+                    }
 
+                })
         }
     }
 
