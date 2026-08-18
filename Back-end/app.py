@@ -343,9 +343,10 @@ def login():
         return {"success": False, "error": "لطفا تمامی ورودی ها را وارد کنید."}
     else:
         user = User.query.filter_by(password=password, public_name=public_name).first()
-        print(user)
+        print(user,password,public_name)
         if user is not None:
-            return {"success": True}
+            user_back = {'public_name':user.public_name,'username':user.username}
+            return {"success": True,"user":user_back}
         return {"success": False, "error": "کاربری با این اطلاعات وجود ندارد."}
 
 if __name__ == "__main__":

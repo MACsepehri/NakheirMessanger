@@ -1,9 +1,12 @@
+import { useContext } from 'react'
 import { FormLogin, InputSubmit } from '../../styled_components/StyledLoginPage'
 import FormAuthItem from './FormAuthItem'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import { MessengerContext } from '../../Context/MessengerContext'
 
 let FormAuth = ({ name }) => {
+    let getCont = useContext(MessengerContext);
     let SubmitLoginHandler = () => {
         event.preventDefault();
         let ok = true;
@@ -34,17 +37,25 @@ let FormAuth = ({ name }) => {
             alert_pass2.innerHTML = '';
         }
         if (ok) {
-            fetch(`http://127.0.0.1:5000/login?password=${input_pass1.value}&public_name=${input_pass2.value}`)
+            fetch(`http://127.0.0.1:5000/login?password=${input_pass1.value}&public_name=${input_name.value}`)
                 .then((res) => {
                     return res.json()
                 })
                 .then((data) => {
                     console.log(data);
                     if (data.success == false) {
-                            Swal.fire({
-                                title: data.error,
-                                icon: "error"
-                            });
+                        Swal.fire({
+                            title: data.error,
+                            icon: "error"
+                        });
+                        getCont.ChnageActiveForm(false);
+                    } else {
+                        sessionStorage.setItem('user', JSON.stringify(data.user));
+                        getCont.ChnageActiveForm(true);
+                        Swal.fire({
+                            title: 'عملیات با موفقیت انجام شد',
+                            icon: "success"
+                        });
                     }
 
                 })
