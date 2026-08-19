@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { redirect, useNavigate } from "react-router-dom";
 import { styled } from 'styled-components';
 import { MessengerContext } from "../Context/MessengerContext";
+import Main from "../components/MainPage/Main";
 let MainPage = () => {
     const navigate = useNavigate();
     let login = false;
@@ -16,7 +17,7 @@ let MainPage = () => {
         }
     }, [login, navigate])
 
-    return <h1>hello</h1>
+    return (<Main/>)
 }
 
 export default MainPage;
