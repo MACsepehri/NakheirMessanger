@@ -38,3 +38,11 @@ body {
     justify-content: center;
 }
 
+.holder{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    gap: 2%;
+    padding: 2%;
+    background:linear-gradient(45deg,#050505,#410e8098);
+}
