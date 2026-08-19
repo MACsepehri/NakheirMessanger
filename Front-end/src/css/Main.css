@@ -44,5 +44,11 @@ body {
     display: flex;
     gap: 2%;
     padding: 2%;
-    background:linear-gradient(45deg,#050505,#410e8098);
+    background:linear-gradient(
+    135deg,
+    #050611 0%,
+    #0B0920 45%,
+    #180A35 75%,
+    #2A0B55 100%
+);;
 }
