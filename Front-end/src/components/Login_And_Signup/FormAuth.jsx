@@ -54,6 +54,7 @@ let FormAuth = ({ name }) => {
                         getCont.ChnageActiveForm(true);
                         Swal.fire({
                             title: 'عملیات با موفقیت انجام شد',
+                            html:'<a href="/" style="color: #006fed; text-decoration: none;">رفتن به صفحه اصلی</a>',
                             icon: "success"
                         });
                     }

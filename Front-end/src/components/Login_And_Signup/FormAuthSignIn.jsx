@@ -9,6 +9,7 @@ let FormAuthSignIn = ({ name }) => {
     let dt = useContext(MessengerContext);
 
     let SubmitHandler = async () => {
+
         event.preventDefault();
 
         let input = document.getElementById('password1');
@@ -101,7 +102,7 @@ let FormAuthSignIn = ({ name }) => {
             <FormAuthSignUpItem ItemName='نام' InputType='text' IDNAME='NameInput' />
             <FormAuthSignUpItem ItemName='رمز عبور' InputType='password' IDNAME='password1' />
             <FormAuthSignUpItem ItemName='تکرار رمز عبور' InputType='password' IDNAME='password2' />
-            <InputSubmit type="submit" value="ثبت اطلاعات" className="sub" disabled={!dt.ActiveForm} />
+            <InputSubmit type="submit" value="ثبت اطلاعات" className="sub"  />
         </FormLogin2>
     )
 }
