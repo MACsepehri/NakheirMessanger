@@ -50,11 +50,10 @@ let FormAuth = ({ name }) => {
                         });
                         getCont.ChnageActiveForm(false);
                     } else {
-                        sessionStorage.setItem('user', JSON.stringify(data.user));
-                        getCont.ChnageActiveForm(true);
+                        sessionStorage.setItem('user', `{"name":"${data.user.username}","public_name":"${data.user.public_name}"}`);
                         Swal.fire({
                             title: 'عملیات با موفقیت انجام شد',
-                            html:'<a href="/" style="color: #006fed; text-decoration: none;">رفتن به صفحه اصلی</a>',
+                            html: '<a href="/" style="color: #006fed; text-decoration: none;">رفتن به صفحه اصلی</a>',
                             icon: "success"
                         });
                     }

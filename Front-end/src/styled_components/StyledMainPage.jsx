@@ -1,4 +1,4 @@
-import {styled} from "styled-components";
+import { styled } from "styled-components";
 
 export let LeftMainPart = styled.div`
 width:20%;
@@ -47,7 +47,7 @@ border:2px solid #3d335f;
 `
 
 export let Div_Img = styled.div
-`
+    `
 width:100%;
 display:flex;
 align-items : center;
@@ -56,8 +56,30 @@ padding-left:10%;
 gap:3%;
 `
 
-export let Img_avatar = styled.img
+export let Avatar = styled.div
 `
-width:50px;
+display:flex;
+position:relative;
+align-items:center;
+justify-content:center;
 border-radius:100%;
+&::before{
+content:'';
+position: absolute;
+display:block;
+width:20px;
+height:20px;
+background-color: lightgreen;
+right:10%;
+z-index:100;
+bottom:5%;
+border-radius:100%;
+}
+`
+
+export let Img_avatar = styled.img
+    `
+width:75px;
+border-radius:100%;
+position:relative;
 `
