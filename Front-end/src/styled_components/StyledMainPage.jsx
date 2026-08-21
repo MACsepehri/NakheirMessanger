@@ -75,7 +75,10 @@ z-index:100;
 bottom:5%;
 border-radius:100%;
 }
+
 `
+
+
 
 export let Img_avatar = styled.img
     `
