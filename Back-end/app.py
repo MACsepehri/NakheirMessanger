@@ -25,6 +25,7 @@ ERROR_KEY = {
     "unknown": 4
 }
 
+
 # database
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
