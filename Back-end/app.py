@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from flask_socketio import SocketIO, join_room, emit
 from flask_cors import CORS
 import os
 
@@ -13,7 +12,6 @@ app.config["SQLALCHEMY_DATABASE_URI"] = (
     f"sqlite:///{os.path.join(basedir, 'database.db')}"
 )
 db = SQLAlchemy(app)
-socketio = SocketIO(app, cors_allowed_origins="*")
 
 # error keys
 ERROR_KEY = {
@@ -45,34 +43,6 @@ class Chat(db.Model):
 # init of database
 with app.app_context():
     db.create_all()
-
-# socketio parts
-@socketio.on("connect")
-def socket_connect():
-    print("Socket connected")
-
-@socketio.on("disconnect")
-def socket_disconnect():
-    print("Socket disconnected")
-
-@socketio.on("join-user")
-def join_user(data):
-    if not data:
-        return
-
-    public_name = data.get("public_name")
-
-    if not public_name:
-        return
-
-    join_room(public_name)
-
-    print(f"User '{public_name}' joined socket room")
-
-    emit("socket-ready", {
-        "success": True,
-        "public_name": public_name
-    })
 
 # routes
 @app.route("/create-chat", methods=["POST"])
@@ -165,32 +135,6 @@ def create_chat():
         targetUserData.chats.append(chat_name)
 
     db.session.commit()
-
-    socket_data = {
-        "success": True,
-        "action": "chat-created",
-        "chat": {
-            "id": new_chat.id,
-            "chat_name": new_chat.chatname,
-            "chat_data": new_chat.chats
-        },
-        "users": [
-            userPublicName,
-            targetPublicName
-        ]
-    }
-
-    socketio.emit(
-        "chat-created",
-        socket_data,
-        to=userPublicName
-    )
-
-    socketio.emit(
-        "chat-created",
-        socket_data,
-        to=targetPublicName
-    )
 
     return {
         "success": True,
@@ -351,4 +295,4 @@ def login():
         return {"success": False, "error": "کاربری با این اطلاعات وجود ندارد."}
 
 if __name__ == "__main__":
-    socketio.run(app, debug=True, port=8080, host="0.0.0.0")
+    app.run(app, debug=True, port=8080, host="0.0.0.0")
