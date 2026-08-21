@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { LeftMainPart, CenterMainPart, RightMainPart, Img_avatar, Div_Img, Avatar } from "../../styled_components/StyledMainPage";
+import { io } from 'socket.io-client';
 
 let Main = () => {
+    const socket = io(`http://${window.location.host}`);
     let storedName = JSON.parse(sessionStorage.getItem('user'));
-        console.log(typeof(storedName));
-
     return (
 
         <>
