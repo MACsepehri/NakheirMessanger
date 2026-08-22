@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import os
+import time
+import random
 
 app = Flask(__name__)
 CORS(app)
@@ -243,6 +245,7 @@ def send_message():
 
 @app.route("/main-login-checker")
 def mainLoginChecker():
+    time.sleep(random.randint(1, 5))
     l = []
     for user in User.query.all():
         l.append({"name": user.username, "public_name": user.public_name})
@@ -250,6 +253,7 @@ def mainLoginChecker():
 
 @app.route("/check-input")
 def checkPassword():
+    time.sleep(random.randint(1, 5))
     status = {'pass_same':False,'name_same':False}
     password = request.args.get("password")
     name = request.args.get('name')
