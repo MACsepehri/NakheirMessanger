@@ -2,11 +2,11 @@ import { useContext } from 'react'
 import { FormLogin, InputSubmit } from '../../styled_components/StyledLoginPage'
 import FormAuthItem from './FormAuthItem'
 import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
 import { MessengerContext } from '../../Context/MessengerContext'
 
 let FormAuth = ({ name }) => {
     let getCont = useContext(MessengerContext);
+
     let SubmitLoginHandler = () => {
         event.preventDefault();
         let ok = true;
@@ -64,6 +64,7 @@ let FormAuth = ({ name }) => {
 
     return (
         <FormLogin action="" className="login" onSubmit={() => { SubmitLoginHandler() }}>
+
             <h1>{name}</h1>
             <FormAuthItem ItemName='نام کاربری' InputType='text' IDNAME='TextInput' />
             <FormAuthItem ItemName='رمز عبور' InputType='password' IDNAME='PasswordInput1' />

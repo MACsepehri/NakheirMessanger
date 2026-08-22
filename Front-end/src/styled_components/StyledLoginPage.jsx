@@ -10,26 +10,20 @@ export let ItemDiv = styled.div
     `
 export let InputItem = styled.input`
   width: 80%;
-  height: 35px;
-  background: transparent !important;
-  text-align: center;
+  height: 50px;
+  background: #171625 !important;
   color: white !important;
-  border: 0;
-  border-bottom: 2px solid #26268f;
+  border: 2px solid #262537;
+  border-radius:10px;
   outline: none;
+  font-size:20px;
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus {
-    -webkit-text-fill-color: white !important;
+    -webkit-text-fill-color: #ffffff !important;
     -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+    -webkit-background-clip: text !important;
     transition: background-color 5000s ease-in-out 0s;
-    
-  }
-  &:hover {
-    border-bottom: 2px solid #26268f;
-  }
-  &:focus {
-    border-bottom: 2px solid #26268f;
   }
 `;
 
@@ -37,11 +31,11 @@ export let InputItem = styled.input`
 export let FormLogin = styled.form
     `
     padding-top:1%;
-    width:400px;
-    min-height:500px;
-    background-color: #0d0d1f5b;
-    border:2px solid #26268f;
-    border-radius:60px;
+    width:500px;
+    min-height:700px;
+    background-color: #11111F;
+    border:2px solid #39314F;
+    border-radius:40px;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -81,3 +75,8 @@ export let InputSubmit = styled.input
     transform:scale(1.1);
     }
     `
+
+export let DivInput = styled.div
+`
+position:relative;
+`
