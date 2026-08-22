@@ -38,7 +38,6 @@ export let FormLogin = styled.form
     align-items:center;
     gap:40px;
     &:hover{
-    transform:translateY(-1%);
     padding-bottom:10px ;
     }
     `
@@ -56,9 +55,6 @@ export let FormLogin2 = styled.form
     align-items:center;
     gap:40px;
     padding-bottom:20px ;
-    &:hover{
-    transform:translateY(-1%);
-    }
     `
 
 

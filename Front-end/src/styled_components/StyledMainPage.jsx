@@ -11,7 +11,6 @@ flex-direction:column;
 padding-top:2%;
 transition:all 600ms ease;
 &:hover{
-transform:translateY(-1%);
 border:2px solid #3d335f;
 }
 `
@@ -25,7 +24,6 @@ border:2px solid #313164;
 transition:all 600ms ease;
 
 &:hover{
-transform:translateY(-1%);
 border:2px solid #3d335f;
 }
 `
@@ -41,7 +39,6 @@ border:2px solid #313164;
 transition:all 600ms ease;
 
 &:hover{
-transform:translateY(-1%);
 border:2px solid #3d335f;
 }
 `
@@ -57,7 +54,7 @@ gap:3%;
 `
 
 export let Avatar = styled.div
-`
+    `
 display:flex;
 position:relative;
 align-items:center;

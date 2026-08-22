@@ -270,8 +270,8 @@ def register():
         password = request.args.get("password", None)
         public_name = request.args.get("public_name", None)
         print(name,password,public_name)
-        if name is None or password is None or public_name is None:
-            return {"success": False, "error": "لطفا تمامی ورودی ها را وارد کنید."}
+        if name is None or password is None or public_name is None: 
+            return {"success": False, "error": "لطفا تمامی ورودی ها پر وارد کنید."}
         else:
             user = User(username=name, password=password, public_name=public_name)
             db.session.add(user)
@@ -285,7 +285,7 @@ def login():
     password = request.args.get("password", None)
     public_name = request.args.get("public_name", None)
     if password is None or public_name is None:
-        return {"success": False, "error": "لطفا تمامی ورودی ها را وارد کنید."}
+        return {"success": False, "error": "لطفا تمامی ورودی ها را پر کنید."}
     else:
         user = User.query.filter_by(password=password, public_name=public_name).first()
         print(user,password,public_name)
