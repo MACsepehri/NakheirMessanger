@@ -1,14 +1,17 @@
-import { ItemDiv, InputItem } from '../../styled_components/StyledLoginPage'
+import { ItemDiv, InputItem,DivInput } from '../../styled_components/StyledLoginPage'
 import { icon } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon,DivInput } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import withReactContent from 'sweetalert2-react-content'
 let FormAuthItem = ({ ItemName, InputType, IDNAME }) => {
     return (
         <ItemDiv className="item">
             <p>{ItemName}</p>
-            <FontAwesomeIcon icon={faUser} />
+            <DivInput>
+            {IDNAME=='TextInput'?<FontAwesomeIcon icon={faUser} />:<FontAwesomeIcon icon={faLock} />}
             <InputItem id={IDNAME} type={`${InputType}`} />
+            </DivInput>
+
             <h6 className={`alert${IDNAME}`}></h6>
 
         </ItemDiv>

@@ -62,3 +62,9 @@ body {
             #2A0B55 100%);
     ;
 }
+
+.fa-user,.fa-lock{
+    position: absolute;
+    z-index: 100000;
+    right: 15%;
+}

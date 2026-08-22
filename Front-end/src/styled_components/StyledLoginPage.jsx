@@ -11,6 +11,8 @@ export let ItemDiv = styled.div
 export let InputItem = styled.input`
   width: 80%;
   height: 50px;
+  text-align:right;
+  padding-right:13%;
   background: #171625 !important;
   color: white !important;
   border: 2px solid #262537;
@@ -43,7 +45,7 @@ export let FormLogin = styled.form
     &:hover{
     padding-bottom:10px ;
     }
-    `   
+    `
 
 
 export let FormLogin2 = styled.form
@@ -77,6 +79,10 @@ export let InputSubmit = styled.input
     `
 
 export let DivInput = styled.div
-`
-position:relative;
+    `
+    width:100%;
+    display:flex;
+    align-items:center;
+    position:relative;
+    justify-content:center;
 `
