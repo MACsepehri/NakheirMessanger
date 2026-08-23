@@ -66,5 +66,5 @@ body {
 .fa-user,.fa-lock{
     position: absolute;
     z-index: 100000;
-    right: 15%;
+    right: 5%;
 }

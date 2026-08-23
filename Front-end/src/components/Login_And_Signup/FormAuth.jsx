@@ -66,9 +66,8 @@ let FormAuth = ({ name }) => {
         <FormLogin action="" className="login" onSubmit={() => { SubmitLoginHandler() }}>
 
             <h1>{name}</h1>
-            <FormAuthItem ItemName='نام کاربری' InputType='text' IDNAME='TextInput' />
-            <FormAuthItem ItemName='رمز عبور' InputType='password' IDNAME='PasswordInput1' />
-            <FormAuthItem ItemName='تکرار رمز عبور' InputType='password' IDNAME='PasswordInput2' />
+            <FormAuthItem ItemName='نام کاربری' InputType='text' IDNAME='TextInput' PlaceHolder='نام کاربری خود را وارد کنید'/>
+            <FormAuthItem ItemName='رمز عبور' InputType='password' IDNAME='PasswordInput1' PlaceHolder='رمز عبور خود را وارد کنید'/>
             <InputSubmit type="submit" value="ثبت اطلاعات" className="sub" />
         </FormLogin>
     )

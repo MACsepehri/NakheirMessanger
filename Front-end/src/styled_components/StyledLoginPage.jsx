@@ -5,11 +5,12 @@ export let ItemDiv = styled.div
     width:100%;
     display:flex;
     flex-direction:column;
-    align-items:center;
+    align-items:flex-end;
     gap:10px;
+    width:80%;
     `
 export let InputItem = styled.input`
-  width: 80%;
+  width: 100%;
   height: 50px;
   text-align:right;
   padding-right:13%;
