@@ -4,6 +4,7 @@ from flask_cors import CORS
 import os
 import time
 import random
+from flask_socketio import emit, SocketIO
 
 app = Flask(__name__)
 CORS(app)
@@ -14,6 +15,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = (
     f"sqlite:///{os.path.join(basedir, 'database.db')}"
 )
 db = SQLAlchemy(app)
+sock = SocketIO(app)
 
 # error keys
 ERROR_KEY = {
@@ -32,6 +34,7 @@ class User(db.Model):
     username = db.Column(db.String, unique=False, nullable=False)
     password = db.Column(db.String, nullable=True,unique=True)
     public_name = db.Column(db.String, unique=False, nullable=False)
+    chats = db.Column(db.JSON, nullable=True, default=list)  # ✅ اضافه شد
 
 class Chat(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -45,6 +48,11 @@ class Chat(db.Model):
 # init of database
 with app.app_context():
     db.create_all()
+
+# socket
+@sock.on("connect")
+def handle_connect(s):
+    pass
 
 # routes
 @app.route("/create-chat", methods=["POST"])
@@ -299,4 +307,4 @@ def login():
         return {"success": False, "error": "کاربری با این اطلاعات وجود ندارد."}
 
 if __name__ == "__main__":
-    app.run(app, debug=True, port=8080, host="0.0.0.0")
+    sock.run(app, debug=True, port=8080, host="0.0.0.0")
