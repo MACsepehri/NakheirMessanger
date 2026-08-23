@@ -1,10 +1,10 @@
 import { useContext } from 'react'
-import { FormLogin, InputSubmit } from '../../styled_components/StyledLoginPage'
+import { FormLogin, InputSubmit,TitleDiv,InputHandelDiv } from '../../styled_components/StyledLoginPage'
 import FormAuthItem from './FormAuthItem'
 import Swal from 'sweetalert2'
 import { MessengerContext } from '../../Context/MessengerContext'
 
-let FormAuth = ({ name }) => {
+let FormAuth = ({ name,des }) => {
     let getCont = useContext(MessengerContext);
 
     let SubmitLoginHandler = () => {
@@ -64,10 +64,15 @@ let FormAuth = ({ name }) => {
 
     return (
         <FormLogin action="" className="login" onSubmit={() => { SubmitLoginHandler() }}>
-
-            <h1>{name}</h1>
+            <TitleDiv>
+                        <h1>{name}</h1>
+            <p>{des}</p>
+            </TitleDiv>
+            <InputHandelDiv>
             <FormAuthItem ItemName='نام کاربری' InputType='text' IDNAME='TextInput' PlaceHolder='نام کاربری خود را وارد کنید'/>
             <FormAuthItem ItemName='رمز عبور' InputType='password' IDNAME='PasswordInput1' PlaceHolder='رمز عبور خود را وارد کنید'/>
+            </InputHandelDiv>
+
             <InputSubmit type="submit" value="ثبت اطلاعات" className="sub" />
         </FormLogin>
     )

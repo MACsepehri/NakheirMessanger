@@ -14,7 +14,7 @@ export function LoginPage() {
     return (
         <>
             <div className="container">
-                <FormAuth name='ورود' />
+                <FormAuth name='ورود به پیام رسان' des='خوش آمدید برای ادامه وارد شوید' />
             </div>
         </>
     )

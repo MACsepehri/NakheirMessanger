@@ -24,6 +24,7 @@ export let InputItem = styled.input`
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus {
     -webkit-text-fill-color: #ffffff !important;
+    color:white;
     -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
     -webkit-background-clip: text !important;
     transition: background-color 5000s ease-in-out 0s;
@@ -67,15 +68,14 @@ export let FormLogin2 = styled.form
 
 export let InputSubmit = styled.input
     `
-    width:150px;
+    width:80%;
     height:40px;
     border-radius:10px;
-    background-color: #313164;
+    background-color: #651CD6;
     border:none;
-    box-shadow:0px 0px 10px #313164;
     cursor:pointer;
     &:hover{
-    transform:scale(1.1);
+    transform:translateY(-10%);
     }
     `
 
@@ -86,4 +86,26 @@ export let DivInput = styled.div
     align-items:center;
     position:relative;
     justify-content:center;
+`
+
+export let TitleDiv = styled.div
+    `
+    width:100%;
+    height:40%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:30px;
+`
+
+export let InputHandelDiv = styled.div
+`
+    width:100%;
+    height:40%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:30px;
 `
