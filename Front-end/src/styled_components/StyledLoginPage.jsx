@@ -34,7 +34,6 @@ export let InputItem = styled.input`
 
 export let FormLogin = styled.form
     `
-    padding-top:1%;
     width:500px;
     min-height:700px;
     background-color: #11111F;
@@ -44,25 +43,22 @@ export let FormLogin = styled.form
     flex-direction:column;
     align-items:center;
     gap:40px;
-    &:hover{
-    padding-bottom:10px ;
-    }
+    padding-bottom:10px;
     `
 
 
 export let FormLogin2 = styled.form
     `
-    padding-top:1%;
-    width:450px;
-    min-height:600px;
-    background-color: #282828;
+    width:500px;
+    min-height:700px;
+    background-color: #11111F;
+    border:2px solid #39314F;
     border-radius:40px;
     display:flex;
     flex-direction:column;
     align-items:center;
     gap:40px;
-    padding-bottom:20px ;
-    `
+    padding-bottom:10px;   `
 
 
 
@@ -96,7 +92,7 @@ export let TitleDiv = styled.div
     align-items:center;
     justify-content:center;
     flex-direction:column;
-    gap:30px;
+    gap:20px;
 `
 
 export let InputHandelDiv = styled.div
@@ -113,7 +109,6 @@ export let InputHandelDiv = styled.div
 export let ImgLogoInput = styled.img
 `
 	width:200px;
-		
 
 `
 
