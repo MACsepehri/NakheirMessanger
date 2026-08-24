@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { FormLogin, InputSubmit,TitleDiv,InputHandelDiv } from '../../styled_components/StyledLoginPage'
+import { FormLogin, InputSubmit,TitleDiv,InputHandelDiv,ImgLogoInput} from '../../styled_components/StyledLoginPage'
 import FormAuthItem from './FormAuthItem'
 import Swal from 'sweetalert2'
 import { MessengerContext } from '../../Context/MessengerContext'
@@ -65,7 +65,8 @@ let FormAuth = ({ name,des }) => {
     return (
         <FormLogin action="" className="login" onSubmit={() => { SubmitLoginHandler() }}>
             <TitleDiv>
-                        <h1>{name}</h1>
+	   <ImgLogoInput src='/src/assets/1787474457 (Edited)-no-bg.png'/>
+             <h1>{name}</h1>
             <p>{des}</p>
             </TitleDiv>
             <InputHandelDiv>

@@ -109,3 +109,11 @@ export let InputHandelDiv = styled.div
     flex-direction:column;
     gap:30px;
 `
+
+export let ImgLogoInput = styled.img
+`
+	width:200px;
+		
+
+`
+
