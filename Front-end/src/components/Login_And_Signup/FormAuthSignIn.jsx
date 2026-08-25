@@ -1,9 +1,10 @@
 import { useEffect, useContext, use } from 'react'
-import { FormLogin, FormLogin2, InputSubmit } from '../../styled_components/StyledLoginPage'
+import { FormLogin, InputSubmit2,TitleDiv2,InputHandelDiv,ImgLogoInput,FormLogin2 ,  PLinkElement } from '../../styled_components/StyledLoginPage'
 import FormAuthSignUpItem from './FormAuthSignUpItem'
 import { MessengerContext } from '../../Context/MessengerContext';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import {Link} from 'react-router-dom'
 
 let FormAuthSignIn = ({ name }) => {
     let dt = useContext(MessengerContext);
@@ -29,7 +30,7 @@ let FormAuthSignIn = ({ name }) => {
         console.log(data);
 
         if (input.value.length > 0 && input2.value.length > 0 && input3.value.length > 0 && input4.value.length > 0) {
-            input3.style.borderBottom = '2px solid #9112BC';
+            input3.style.borderBottom = '2px solid #262537';
             ok = true;
             alertpass3.innerHTML = '';
 
@@ -39,7 +40,7 @@ let FormAuthSignIn = ({ name }) => {
                 alertpass.innerHTML = 'این رمز تکراری است';
                 ok = false;
             } else {
-                input.style.borderBottom = '2px solid #9112BC';
+                input.style.borderBottom = '2px solid #262537 ';
                 alertpass.innerHTML = '';
             }
 
@@ -48,7 +49,7 @@ let FormAuthSignIn = ({ name }) => {
                 alertpass3.innerHTML = 'این نام کاربری تکراری است';
                 ok = false;
             } else {
-                input3.style.borderBottom = '2px solid #9112BC';
+                input3.style.borderBottom = '2px solid #262537';
                 alertpass3.innerHTML = '';
             }
 
@@ -59,7 +60,7 @@ let FormAuthSignIn = ({ name }) => {
                 ok = false;
             }
             else {
-                input2.style.borderBottom = '2px solid #9112BC';
+                input2.style.borderBottom = '2px solid #262537';
                 alertpass2.innerHTML = '';
 
             }
@@ -97,12 +98,17 @@ let FormAuthSignIn = ({ name }) => {
     }
     return (
         <FormLogin2 action="" className="login" onSubmit={() => { SubmitHandler() }}>
-            <h1>{name}</h1>
-            <FormAuthSignUpItem ItemName='نام کاربری' InputType='text' IDNAME='TextInput' />
-            <FormAuthSignUpItem ItemName='نام' InputType='text' IDNAME='NameInput' />
-            <FormAuthSignUpItem ItemName='رمز عبور' InputType='password' IDNAME='password1' />
-            <FormAuthSignUpItem ItemName='تکرار رمز عبور' InputType='password' IDNAME='password2' />
-            <InputSubmit type="submit" value="ثبت اطلاعات" className="sub"  />
+            <TitleDiv2>
+	   <ImgLogoInput src='/src/assets/1787474457 (Edited)-no-bg.png'/>
+	    <h1>{name}</h1>
+	    </TitleDiv2>
+            <FormAuthSignUpItem ItemName='نام کاربری' InputType='text' IDNAME='TextInput' PlaceHolder='نام کاربری خود را وارد کنید' />
+            <FormAuthSignUpItem ItemName='نام' InputType='text' IDNAME='NameInput' PlaceHolder='نام خود را وارد کنید' />
+            <FormAuthSignUpItem ItemName='رمز عبور' InputType='password' IDNAME='password1' PlaceHolder='رمز عبور خود را وارد کنید' />
+            <FormAuthSignUpItem ItemName='تکرار رمز عبور' InputType='password' IDNAME='password2' PlaceHolder='تکرار رمز عبور خود را وارد کنید' />
+
+            <InputSubmit2 type="submit" value="ثبت اطلاعات" className="sub"  />
+<p class='LinkP'> حساب کاربری دارید؟ <Link to='/login' class='linkA'>وارد شوید</Link></p>
         </FormLogin2>
     )
 }

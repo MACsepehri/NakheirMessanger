@@ -23,7 +23,7 @@ let FormAuth = ({ name,des }) => {
             alert_name.innerHTML = 'یکی از ورودی ها خالی هست';
             ok = false;
         } else {
-            input_name.style.borderBottom = '2px solid #9112BC';
+            input_name.style.borderBottom = '2px solid #262537';
             alert_name.innerHTML = '';
         }
 
@@ -66,7 +66,7 @@ let FormAuth = ({ name,des }) => {
             </InputHandelDiv>
 
             <InputSubmit type="submit" value="ثبت اطلاعات" className="sub" />
-	    <Link to='/signup'>حساب کاربری ندارید؟ ثبت نام کنید</Link>
+            <p class='LinkP'> حساب کاربری ندارید؟ <Link to='/signup' class='linkA'>ثبت نام کنید</Link></p>
         </FormLogin>
     )
 }

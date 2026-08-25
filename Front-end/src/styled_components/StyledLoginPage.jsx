@@ -42,7 +42,7 @@ export let FormLogin = styled.form
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:40px;
+    gap:30px;
     padding-bottom:10px;
     `
 
@@ -50,14 +50,14 @@ export let FormLogin = styled.form
 export let FormLogin2 = styled.form
     `
     width:500px;
-    min-height:700px;
+    min-height:800px;
     background-color: #11111F;
     border:2px solid #39314F;
     border-radius:40px;
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:40px;
+    gap:20px;
     padding-bottom:10px;   `
 
 
@@ -74,6 +74,21 @@ export let InputSubmit = styled.input
     transform:translateY(-10%);
     }
     `
+export let InputSubmit2 = styled.input
+    `
+    width:80%;
+    height:40px;
+    border-radius:10px;
+    background-color: #651CD6;
+    border:none;
+    cursor:pointer;
+    margin-top:10px;
+    &:hover{
+    transform:translateY(-10%);
+    }
+    `
+
+
 
 export let DivInput = styled.div
     `
@@ -95,6 +110,18 @@ export let TitleDiv = styled.div
     gap:20px;
 `
 
+export let TitleDiv2 = styled.div
+    `
+    width:100%;
+    height:40%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:10px;
+`
+
+
 export let InputHandelDiv = styled.div
 `
     width:100%;
@@ -103,7 +130,7 @@ export let InputHandelDiv = styled.div
     align-items:center;
     justify-content:center;
     flex-direction:column;
-    gap:30px;
+    gap:40px;
 `
 
 export let ImgLogoInput = styled.img
@@ -111,4 +138,7 @@ export let ImgLogoInput = styled.img
 	width:200px;
 
 `
-
+export let PLinkElement = styled.p
+`
+color:#7F01DF;
+`
