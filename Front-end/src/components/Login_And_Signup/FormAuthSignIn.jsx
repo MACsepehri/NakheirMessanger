@@ -108,7 +108,7 @@ let FormAuthSignIn = ({ name }) => {
             <FormAuthSignUpItem ItemName='تکرار رمز عبور' InputType='password' IDNAME='password2' PlaceHolder='تکرار رمز عبور خود را وارد کنید' />
 
             <InputSubmit2 type="submit" value="ثبت اطلاعات" className="sub"  />
-<p class='LinkP'> حساب کاربری دارید؟ <Link to='/login' class='linkA'>وارد شوید</Link></p>
+<p className='LinkP'> حساب کاربری دارید؟ <Link to='/login' className='linkA'>وارد شوید</Link></p>
         </FormLogin2>
     )
 }

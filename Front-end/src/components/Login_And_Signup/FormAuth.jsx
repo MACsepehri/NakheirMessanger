@@ -66,7 +66,7 @@ let FormAuth = ({ name,des }) => {
             </InputHandelDiv>
 
             <InputSubmit type="submit" value="ثبت اطلاعات" className="sub" />
-            <p class='LinkP'> حساب کاربری ندارید؟ <Link to='/signup' class='linkA'>ثبت نام کنید</Link></p>
+            <p className='LinkP'> حساب کاربری ندارید؟ <Link to='/signup' className='linkA'>ثبت نام کنید</Link></p>
         </FormLogin>
     )
 }
