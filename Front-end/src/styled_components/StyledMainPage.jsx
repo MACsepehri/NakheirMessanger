@@ -107,4 +107,7 @@ justify-content: flex-end;
 padding-right:30px;
 gap:30px;
 cursor:pointer;
+&:hover{
+background-color:#14143b;
+}
 `

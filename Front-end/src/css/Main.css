@@ -80,3 +80,14 @@ font-size:20px;
 #ActiveLeft{
 background-color:#14143b;
 }
+
+
+#UserLeft{
+	font-size:20px;
+	position:static;
+	z-index:0;
+	right:0;
+}
+#Little{
+font-size:19px;
+}

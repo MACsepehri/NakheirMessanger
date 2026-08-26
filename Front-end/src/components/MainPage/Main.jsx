@@ -4,7 +4,7 @@ import { io } from 'socket.io-client';
 import { redirect, useNavigate } from "react-router-dom";
 import { icon } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faLock, faEnvelope, faMessage,faComments, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faLock, faEnvelope, faMessage,faComments, faUsers,faPhone,faBoxArchive,faGear } from '@fortawesome/free-solid-svg-icons';
 
 let Main = () => {
     // const socket = io(`http://${window.location.host}`);
@@ -51,6 +51,22 @@ let Main = () => {
 	    <h1>گروه ها</h1>
 	    <FontAwesomeIcon icon={ faUsers } />
 	    </ItemLeft>
+	    <ItemLeft  >
+            	<h1>مخاطبین</h1>
+            	<FontAwesomeIcon icon={ faUser } id='UserLeft' />
+            </ItemLeft>
+	    <ItemLeft>
+            	<h1>تماس ها</h1>
+            	<FontAwesomeIcon icon={ faPhone } id='UserLeft' />
+            </ItemLeft>
+	    <ItemLeft>
+            	<h1 id="Little">پیام های ذخیره شده</h1>
+            	<FontAwesomeIcon icon={ faBoxArchive } id='UserLeft' />
+            </ItemLeft>
+	    <ItemLeft>
+            	<h1>تنظیمات </h1>
+            	<FontAwesomeIcon icon={ faGear } id='UserLeft' />
+            </ItemLeft>
 	    </ItemHandlerDiv>
                 </LeftMainPart>
                 <CenterMainPart></CenterMainPart>
