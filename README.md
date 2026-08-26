@@ -90,7 +90,7 @@ This project is licensed under the
 </p>
 
 <p>
-Made with --> ☕  💻
+Made with -➤  ☕  💻
 </p>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=9B59B6&height=120&section=footer&text=Thanks%20for%20visiting%20%F0%9F%92%9C&fontSize=28&fontColor=FFFFFF&animation=twinkling" width="100%"/>
