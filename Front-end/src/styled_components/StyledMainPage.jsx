@@ -60,7 +60,7 @@ position:relative;
 align-items:center;
 justify-content:center;
 border-radius:100%;
-&::before{
+::before{
 content:'';
 position: absolute;
 display:block;
@@ -82,4 +82,29 @@ export let Img_avatar = styled.img
 width:75px;
 border-radius:100%;
 position:relative;
+`
+
+export let  ItemHandlerDiv = styled.div
+`
+width:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:20px;
+flex-direction:column;
+padding-top:100px;
+`
+
+export let ItemLeft = styled.div
+`
+height:70px;
+width:90%;
+background-color:transparent ;
+border-radius:15px;
+display:flex;
+align-items:center;
+justify-content: flex-end;
+padding-right:30px;
+gap:30px;
+cursor:pointer;
 `

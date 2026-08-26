@@ -1,7 +1,10 @@
 import { useEffect } from "react";
-import { LeftMainPart, CenterMainPart, RightMainPart, Img_avatar, Div_Img, Avatar } from "../../styled_components/StyledMainPage";
+import { LeftMainPart, CenterMainPart, RightMainPart, Img_avatar, Div_Img, Avatar,ItemHandlerDiv, ItemLeft } from "../../styled_components/StyledMainPage";
 import { io } from 'socket.io-client';
 import { redirect, useNavigate } from "react-router-dom";
+import { icon } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faLock, faEnvelope, faMessage,faComments, faUsers } from '@fortawesome/free-solid-svg-icons';
 
 let Main = () => {
     // const socket = io(`http://${window.location.host}`);
@@ -39,6 +42,16 @@ let Main = () => {
                         </Avatar>
                         <h1>{storedName.name}</h1>
                     </Div_Img>
+	    	    <ItemHandlerDiv>
+	    <ItemLeft id='ActiveLeft' >
+	    <h1>پیام ها</h1>
+	    <FontAwesomeIcon icon={faComments} />
+	    </ItemLeft>
+	    <ItemLeft  >
+	    <h1>گروه ها</h1>
+	    <FontAwesomeIcon icon={ faUsers } />
+	    </ItemLeft>
+	    </ItemHandlerDiv>
                 </LeftMainPart>
                 <CenterMainPart></CenterMainPart>
                 <RightMainPart></RightMainPart>

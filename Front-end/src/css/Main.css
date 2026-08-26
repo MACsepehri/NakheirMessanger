@@ -53,7 +53,7 @@ body {
     height: 100%;
     width: 100%;
     display: flex;
-    gap: 2%;
+    gap: 1%;
     padding: 2%;
     background: linear-gradient(135deg,
             #050611 0%,
@@ -71,4 +71,12 @@ body {
 
 .linkA{
 color : #8E02CA;
+}
+
+.fa-comments,.fa-users{
+font-size:20px;
+}
+
+#ActiveLeft{
+background-color:#14143b;
 }
