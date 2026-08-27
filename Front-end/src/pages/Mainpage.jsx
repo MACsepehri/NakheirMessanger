@@ -9,6 +9,9 @@ const Main = lazy(() => {
 });
 
 let MainPage = () => {
+    useEffect(() => {
+        document.title = "Nakheir messenger";
+    }, []);
     return (
         <Suspense fallback={<div>Loading...</div>}>
             <Main />

@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 export function LoginPage() {
     const navigate = useNavigate();
     useEffect(() => {
+        document.title = "Sign in | Nakheir";
         const storedName = sessionStorage.getItem('user');
         if (storedName) {
             navigate('/');
