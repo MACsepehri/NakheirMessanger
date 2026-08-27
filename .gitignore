@@ -1,2 +1,4 @@
-venv
-bigany
+.venv
+package-lock.json
+Front-end/node_modules
+Front-end/package-lock.json
