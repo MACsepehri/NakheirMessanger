@@ -48,16 +48,8 @@ let Main = () => {
 	    <FontAwesomeIcon icon={faComments} />
 	    </ItemLeft>
 	    <ItemLeft  >
-	    <h1>گروه ها</h1>
-	    <FontAwesomeIcon icon={ faUsers } />
-	    </ItemLeft>
-	    <ItemLeft  >
             	<h1>مخاطبین</h1>
             	<FontAwesomeIcon icon={ faUser } id='UserLeft' />
-            </ItemLeft>
-	    <ItemLeft>
-            	<h1>تماس ها</h1>
-            	<FontAwesomeIcon icon={ faPhone } id='UserLeft' />
             </ItemLeft>
 	    <ItemLeft>
             	<h1 id="Little">پیام های ذخیره شده</h1>
