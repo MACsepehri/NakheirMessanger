@@ -8,6 +8,7 @@ background-color: #0d0d1f5b ;
 border:2px solid #313164;
 display:flex;
 flex-direction:column;
+position:relative;
 padding-top:2%;
 transition:all 600ms ease;
 &:hover{
@@ -110,4 +111,35 @@ cursor:pointer;
 &:hover{
 background-color:#14143b;
 }
+`
+
+export let LastLeftItem = styled.div
+`
+height:150px;
+width:90%;
+position:absolute;
+bottom:5%;
+background-color:rgba(178, 28, 242, .2);
+border-radius:20px;
+right:5%;
+display:flex;
+gap:2%;
+align-items:center;
+`
+
+export let LastMatnLeft = styled.div
+`
+height:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+jusify-content:space-around;
+width:60%;
+`
+
+export let ImgLeftLast = styled.img
+`
+width:100px;
+border-radius:100%;
+
 `

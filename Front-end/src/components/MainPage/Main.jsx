@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { LeftMainPart, CenterMainPart, RightMainPart, Img_avatar, Div_Img, Avatar,ItemHandlerDiv, ItemLeft } from "../../styled_components/StyledMainPage";
+import { LeftMainPart, CenterMainPart, RightMainPart, Img_avatar, Div_Img, Avatar,ItemHandlerDiv, ItemLeft,LastLeftItem, LastMatnLeft,ImgLeftLast} from "../../styled_components/StyledMainPage";
 import { io } from 'socket.io-client';
 import { redirect, useNavigate } from "react-router-dom";
 import { icon } from '@fortawesome/fontawesome-svg-core';
@@ -48,16 +48,8 @@ let Main = () => {
 	    <FontAwesomeIcon icon={faComments} />
 	    </ItemLeft>
 	    <ItemLeft  >
-	    <h1>گروه ها</h1>
-	    <FontAwesomeIcon icon={ faUsers } />
-	    </ItemLeft>
-	    <ItemLeft  >
             	<h1>مخاطبین</h1>
             	<FontAwesomeIcon icon={ faUser } id='UserLeft' />
-            </ItemLeft>
-	    <ItemLeft>
-            	<h1>تماس ها</h1>
-            	<FontAwesomeIcon icon={ faPhone } id='UserLeft' />
             </ItemLeft>
 	    <ItemLeft>
             	<h1 id="Little">پیام های ذخیره شده</h1>
@@ -68,6 +60,12 @@ let Main = () => {
             	<FontAwesomeIcon icon={ faGear } id='UserLeft' />
             </ItemLeft>
 	    </ItemHandlerDiv>
+	    <LastLeftItem>
+
+	   <ImgLeftLast src='/src/assets/1787474457 (Edited)-no-bg.png'/>
+	    <LastMatnLeft>
+	    </LastMatnLeft>
+	    </LastLeftItem>
                 </LeftMainPart>
                 <CenterMainPart></CenterMainPart>
                 <RightMainPart></RightMainPart>
