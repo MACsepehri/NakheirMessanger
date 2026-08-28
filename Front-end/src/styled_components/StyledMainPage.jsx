@@ -133,8 +133,11 @@ height:100%;
 display:flex;
 flex-direction:column;
 align-items:center;
-jusify-content:space-around;
+justify-content:center;
 width:60%;
+font-size:15px;
+gap:20px;
+direction:rtl;
 `
 
 export let ImgLeftLast = styled.img
@@ -143,3 +146,4 @@ width:100px;
 border-radius:100%;
 
 `
+

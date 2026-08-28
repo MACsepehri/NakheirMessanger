@@ -64,6 +64,8 @@ let Main = () => {
 
 	   <ImgLeftLast src='/src/assets/1787474457 (Edited)-no-bg.png'/>
 	    <LastMatnLeft>
+	    <h1>پیام رسان نخیر</h1>
+	    <p>با پیام رسان نخیر مهارت نخیر گفتن خود را افزایش دهید</p>
 	    </LastMatnLeft>
 	    </LastLeftItem>
                 </LeftMainPart>
