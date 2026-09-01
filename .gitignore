@@ -1,4 +1,6 @@
-.venv/
+Back-end/node_modules
+Back-end/.env
+Back-end/package-lock.json
 package-lock.json
 Front-end/node_modules/
 Front-end/package-lock.json
