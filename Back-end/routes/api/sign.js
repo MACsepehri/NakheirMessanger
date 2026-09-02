@@ -6,21 +6,20 @@ const { PrismaMariaDb } = require("@prisma/adapter-mariadb"); // for schema and 
 const { validationTest } = require("../../utils/validation"); // for testing the validation
 require('dotenv').config(); // for reading things from .env
 
-
 // important!!! use this for checking password in loggin :
 // const isValid = await bcrypt.compare(
 //     user_password,
 //     user.user_password
 // );
 
-const adapter = new PrismaMariaDb({
+const adapter = new PrismaMariaDb({ // for connecting to the DB 
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME
 });
 
-const prisma = new PrismaClient({
+const prisma = new PrismaClient({ // for connecting to the DB 
     adapter
 });
 
@@ -29,13 +28,13 @@ Router.post("/signup" , async (req, res) => { // this is a API for SignUp .
         const { user_name, name_user, user_password } = req.body; // getting things from body
         validationTest(user_name, name_user ,user_password); // testing the validation
 
-        const validation = validationTest(
+        const validation = validationTest( // for validation test
             user_name,
             name_user,
             user_password
         );
 
-        if (!validation.ok) {
+        if (!validation.ok) { // for validation test
             return res.status(400).json(validation);
         }
 
@@ -58,12 +57,12 @@ Router.post("/signup" , async (req, res) => { // this is a API for SignUp .
             data: finalUser
         });
 
-        const resUser = { // creating the user 
+        const resUser = { // creating the user for res
             user_name: user_name,
             name_user: name_user
         }
 
-        res.status(201).json({
+        res.status(201).json({ // for the success response
             message: "Acount successfuly created .",
             user: resUser
         });

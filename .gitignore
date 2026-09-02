@@ -5,3 +5,7 @@ Back-end/package-lock.json
 package-lock.json
 Front-end/node_modules/
 Front-end/package-lock.json
+.agents
+.claude
+.cursor
+.devin
