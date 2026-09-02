@@ -19,7 +19,6 @@ const prisma = new PrismaClient({ adapter }); // for connecting to the DB
 Router.post("/signup" , async (req, res) => { // this is a API for SignUp .
     try { // for error handling
         const { user_name, name_user, user_password } = req.body; // getting things from body
-        validationTest(user_name, name_user ,user_password); // testing the validation
 
         const validation = validationTest( // for validation test
             user_name,
@@ -38,8 +37,6 @@ Router.post("/signup" , async (req, res) => { // this is a API for SignUp .
             }
         });
 
-        const hashedPassword = await bcrypt.hash(user_password, 12); // hashing the password
-
         const finalUser = { // creating the user 
             user_name: user_name,
             name_user: name_user,
@@ -49,6 +46,8 @@ Router.post("/signup" , async (req, res) => { // this is a API for SignUp .
         if (user) {
             return res.status(409).json({error: "User already exists."});
         }
+
+        const hashedPassword = await bcrypt.hash(user_password, 12); // hashing the password
 
         const createUser = await prisma.user.create({ // adding user to DB
             data: finalUser
@@ -72,7 +71,6 @@ Router.post("/signup" , async (req, res) => { // this is a API for SignUp .
 Router.post('/signin', async (req, res) => {
     try { // for error handling
         const { user_name, name_user, user_password } = req.body; // getting things from body
-        validationTest(user_name, name_user ,user_password); // testing the validation
 
         const validation = validationTest( // for validation test
             user_name,
@@ -81,7 +79,7 @@ Router.post('/signin', async (req, res) => {
         );
 
         if (!validation.ok) { // for validation test
-            return res.status(400).json(validation);
+            return res.status(401).json(validation);
         }
 
         const user = await prisma.user.findFirst({ // finding user for existing test
@@ -92,7 +90,7 @@ Router.post('/signin', async (req, res) => {
         });
 
         if (!user) {
-            return res.status(409).json({error: "Invalid username or password."});
+            return res.status(401).json({error: "Invalid username or password."});
         }
 
         const isValid = await bcrypt.compare( // checking the password (hash)
