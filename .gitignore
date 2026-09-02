@@ -1,11 +1,12 @@
-Back-end/node_modules
-Back-end/.env
-node_modules
-Back-end/package-lock.json
-package-lock.json
-Front-end/node_modules/
-Front-end/package-lock.json
-.agents
-.claude
-.cursor
-.devin
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.*
+
+# Fu*k prisma (i dont use ts)
+.agents/
+.claude/
+.cursor/
+.devin/
