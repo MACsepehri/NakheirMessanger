@@ -72,4 +72,11 @@ Router.post("/signup" , async (req, res) => { // this is a API for SignUp .
     }
 });
  
+
+
+Router.post('/signin', async (req, res) => {
+    
+});
+
+
 module.exports = Router;
