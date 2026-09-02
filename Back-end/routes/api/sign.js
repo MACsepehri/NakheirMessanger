@@ -6,11 +6,6 @@ const { PrismaMariaDb } = require("@prisma/adapter-mariadb"); // for schema and 
 const { validationTest } = require("../../utils/validation"); // for testing the validation
 require('dotenv').config(); // for reading things from .env
 
-// important!!! use this for checking password in loggin :
-// const isValid = await bcrypt.compare(
-//     user_password,
-//     user.user_password
-// );
 
 const adapter = new PrismaMariaDb({ // for connecting to the DB 
     host: process.env.DB_HOST,
@@ -19,9 +14,7 @@ const adapter = new PrismaMariaDb({ // for connecting to the DB
     database: process.env.DB_NAME
 });
 
-const prisma = new PrismaClient({ // for connecting to the DB 
-    adapter
-});
+const prisma = new PrismaClient({ adapter }); // for connecting to the DB 
 
 Router.post("/signup" , async (req, res) => { // this is a API for SignUp .
     try { // for error handling
@@ -53,6 +46,10 @@ Router.post("/signup" , async (req, res) => { // this is a API for SignUp .
             user_password: hashedPassword
         }
 
+        if (user) {
+            return res.status(409).json({error: "User already exists."});
+        }
+
         const createUser = await prisma.user.create({ // adding user to DB
             data: finalUser
         });
@@ -72,11 +69,52 @@ Router.post("/signup" , async (req, res) => { // this is a API for SignUp .
     }
 });
  
-
-
 Router.post('/signin', async (req, res) => {
-    
+    try { // for error handling
+        const { user_name, name_user, user_password } = req.body; // getting things from body
+        validationTest(user_name, name_user ,user_password); // testing the validation
+
+        const validation = validationTest( // for validation test
+            user_name,
+            name_user,
+            user_password
+        );
+
+        if (!validation.ok) { // for validation test
+            return res.status(400).json(validation);
+        }
+
+        const user = await prisma.user.findFirst({ // finding user for existing test
+            where: {
+                user_name: user_name, // filter
+                name_user: name_user // filter
+            }
+        });
+
+        if (!user) {
+            return res.status(409).json({error: "Invalid username or password."});
+        }
+
+        const isValid = await bcrypt.compare( // checking the password (hash)
+            user_password,
+            user.user_password
+        );
+
+        if (!isValid){ // checking the password (hash)
+            return res.status(400).json("password invalid")
+        }
+
+        return res.status(200).json({ // response if everything okay
+            message: "Login successful.",
+            user: {
+                user_name: user.user_name,
+                name_user: user.name_user
+            }
+        });
+
+    } catch (err) { // still for error handling
+        res.status(500).json({ error: err.message }); // returning the err if it exist.
+    }
 });
 
-
-module.exports = Router;
+module.exports = Router; // for exporting
